@@ -1,4 +1,3 @@
-#include <vector>
 #include <fstream>
 #include <iostream>
 #include "struct.h" //dove sono definite tutte le strutture per i ritorni delle funzioni
@@ -6,7 +5,8 @@
 
 using namespace std;
 
-double r_gas = 8.3136;
+double r_gas = 8.314462618;
+double r_gas_convertita=84.754 /*84.78890475219254*/;
 double g = 9.806;
 
 //legge i file da Dati/Dati_Grezzi secondo quanto detto da mappa.txt
@@ -41,7 +41,7 @@ vector<raw_data> load_data(string mappa)
         loaded_data.push_back(temp_data);
     }
     return loaded_data;
-};
+}
 
 //Ritorna struttura di triplette in compressione.
 vector<raw_data> get_compression(vector<raw_data> &raw, vector<double> &indexes)
@@ -55,6 +55,7 @@ vector<raw_data> get_compression(vector<raw_data> &raw, vector<double> &indexes)
             temp_compression.temp.push_back(raw[i].temp[j]);
             temp_compression.volume.push_back(raw[i].volume[j]);
             temp_compression.pressure.push_back(raw[i].pressure[j]);
+            temp_compression.err_volume.push_back(0.1);
         }
         temp_compression.n_camp = raw[i].n_camp;
         compress.push_back(temp_compression);
@@ -74,6 +75,7 @@ vector<raw_data> get_depression(vector<raw_data> &raw, vector<double> &indexes)
             temp_depression.temp.push_back(raw[i].temp[j]);
             temp_depression.volume.push_back(raw[i].volume[j]);
             temp_depression.pressure.push_back(raw[i].pressure[j]);
+            temp_depression.err_volume.push_back(0.1);
         }
         temp_depression.n_camp = raw[i].n_camp;
         depress.push_back(temp_depression);
@@ -95,6 +97,7 @@ vector<raw_data> scarta_code(vector<raw_data> &dati_grezzi)
                 temp_new_data.pressure.push_back(d.pressure[i]);
                 temp_new_data.volume.push_back(d.volume[i]);
                 temp_new_data.temp.push_back(d.temp[i]);
+                temp_new_data.err_volume.push_back(0.1);
             }
         }
         temp_new_data.n_camp = d.n_camp;
@@ -111,42 +114,6 @@ vector<int> get_center(vector<raw_data> &raw)
         centri.push_back(raw[i].temp.size() / 2);
     }
     return centri;
-}
-
-vector<int> ricerca_massimo(vector<raw_data> &raw, vector<int> indexes)
-{
-    vector<int> massimi;
-    for (int i = 0; i < raw.size(); i++)
-    {
-        int min = raw[i].temp.size() - 1;
-        int max = indexes[i];
-        for (int k = indexes[i]; k < raw[i].temp.size(); k++)
-        {
-            if (raw[i].temp[indexes[i]] < raw[i].temp[raw[i].temp.size() - 1])
-            {
-                if (raw[i].temp[k] < raw[i].temp[min])
-                {
-                    min = k;
-                }
-            }
-            else
-            {
-                if (raw[i].temp[k] > raw[i].temp[min])
-                {
-                    max = k;
-                }
-            }
-        }
-        if (raw[i].temp[indexes[i]] < raw[i].temp[raw[i].temp.size() - 1])
-        {
-            massimi.push_back(min);
-        }
-        else
-        {
-            massimi.push_back(max);
-        }
-    }
-    return massimi;
 }
 
 //Get temperatura media, attenzione a cosa si mette come dati grezzi
@@ -173,7 +140,7 @@ vector<info> get_moli(vector<raw_data> &dati_grezzi)
         vector<double> temp_n;
         for (int i = 0; i < d.pressure.size(); i++)
         {
-            temp_n.push_back(d.pressure[i] * d.volume[i] * g * 0.1 / (d.temp[i] * r_gas)); //convertite tutte in moli come dio vuole con le unità del SI
+            temp_n.push_back(d.pressure[i] * d.volume[i] * g * 0.01 / (d.temp[i] * r_gas)); //convertite tutte in moli come dio vuole con le unità del SI
         }
         temp_campione.n_moli = media(temp_n);
         temp_campione.err_n_moli = dstd_media(temp_n);
@@ -182,3 +149,55 @@ vector<info> get_moli(vector<raw_data> &dati_grezzi)
     }
     return temp_info;
 }
+
+//Per restituire il giusto reciproco
+vector<double> reciproco(vector<double> &dati_pressione)
+{
+    vector<double> temp_vec;
+    for (auto d : dati_pressione)
+    {
+        temp_vec.push_back(1 / d);
+    }
+    return temp_vec;
+}
+
+//Effettua interpolazione su 1/p in ascissa e v in ordinata
+vector<info> get_interpolazioni(vector<raw_data> &dati)
+{
+    vector<info> infos;
+    for (int i = 0; i < dati.size(); i++)
+    {
+        info temp_info;
+        temp_info.b_ang = b_angolare_err_uguali(reciproco(dati[i].pressure), dati[i].volume);
+        temp_info.err_b_ang = sigma_b(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
+        temp_info.a_intercetta = a_intercetta_err_uguali(reciproco(dati[i].pressure), dati[i].volume);
+        temp_info.err_a_intercetta = sigma_a(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
+
+        infos.push_back(temp_info);
+    }
+    return infos;
+}
+
+//Unisce i dati di temperature (fatte solo sui dati dai massimi) e delle interpolazioni (senza le codine)
+vector<info> join_info(vector<info> &interpolazioni, vector<info> &temperature)
+{
+    vector<info> temp_info;
+    for (int i = 0; i < interpolazioni.size(); i++)
+    {
+        info temp_joining;
+        temp_joining.temp_media = temperature[i].temp_media;
+        temp_joining.err_temp_media = temperature[i].err_temp_media;
+        temp_joining.a_intercetta = interpolazioni[i].a_intercetta;
+        temp_joining.err_a_intercetta = interpolazioni[i].a_intercetta;
+        temp_joining.b_ang = interpolazioni[i].b_ang;
+        temp_joining.err_b_ang = interpolazioni[i].err_b_ang;
+        temp_joining.n_moli = interpolazioni[i].b_ang / (r_gas_convertita * temperature[i].temp_media);
+        temp_joining.err_n_moli = sqrt(pow(1. / (r_gas_convertita * temperature[i].temp_media), 2) * pow(temp_joining.err_b_ang, 2) + pow((-1. / pow(temperature[i].temp_media, 2)) * (temp_joining.b_ang / r_gas_convertita), 2) * pow(temperature[i].err_temp_media, 2));
+       //temp_joining.err_n_moli = sqrt(pow(1. / (r_gas_convertita * temperature[i].temp_media), 2) * pow(temp_joining.err_b_ang, 2) + pow((-1. / pow(temperature[i].temp_media, 2)) * (temp_joining.b_ang / r_gas_convertita), 2) * pow(0.1, 2));
+
+        temp_info.push_back(temp_joining);
+    }
+    return temp_info;
+}
+
+//stampare i dati delle interpolazioni 

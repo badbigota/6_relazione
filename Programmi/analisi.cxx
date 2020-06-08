@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <cmath>
 #include "functions.h"
 
@@ -26,7 +25,7 @@ int main()
     auto compressione_conf = get_compression(isoterme_confronto, n_divisione_confronto);
     auto decompressione_conf = get_depression(isoterme_confronto, n_divisione_confronto);
 
-    //scarto code malvagie (sc=senza code)
+    //scarto code malvagie (sc=senza code), ovvero dove non può essere fisicamente isoterma
     auto compressione_sc = scarta_code(compressione);
     auto decompressione_sc = scarta_code(decompressione);
     auto compressione_conf_sc = scarta_code(compressione_conf);
@@ -69,7 +68,7 @@ int main()
     }
 
     //Definisco range indice iniziale per prendere le temperature, separatamente per compress e decompress
-    vector<int> index_compr = {0, 299, 239, 0, 161, 83};
+    vector<int> index_compr = {0, 299, 239, 0, 161, 83}; //dove la temperatura è massima dopo il calo a parabola, problema sono nella decompressione
     vector<int> index_depress = {0, 0, 0, 0, 0, 0};
     vector<int> index_compr_part = {239, 0, 0};
     vector<int> index_decompr_part = {0, 0, 0};
@@ -84,12 +83,29 @@ int main()
         cout << temperature_compress[i].temp_media << "+/-" << temperature_compress[i].err_temp_media << "\t" << temperature_decompress[i].temp_media << "+/-" << temperature_decompress[i].err_temp_media << endl;
     }
 
-    //TEST calcolo di moli da tutti i dati
+    //TEST calcolo di moli da tutti i dati tramite terne
     auto moli_tot = get_moli(compressione);
 
     for (auto d : moli_tot)
     {
-        cout << d.n_moli <<"+/-"<<d.err_n_moli<< endl;
+        cout << d.n_moli << "+/-" << d.err_n_moli << endl;
+    }
+
+    auto interpolaz_compress = get_interpolazioni(compressione_sc);
+    auto interpolaz_decompress = get_interpolazioni(decompressione_sc);
+    auto interpolazioni_compress_conf = get_interpolazioni(compressione_conf_sc);
+    auto interpolazioni_decompress_conf = get_interpolazioni(decompressione_conf_sc);
+
+    auto joined_compress = join_info(interpolaz_compress, temperature_compress);
+    auto joined_decompress = join_info(interpolaz_decompress, temperature_decompress);
+    auto joined_compress_conf = join_info(interpolazioni_compress_conf, temperature_compress_part);
+    auto joined_decompress_conf = join_info(interpolazioni_decompress_conf, temperature_decompress_part);
+
+    for ( int i= 0; i< joined_compress.size(); i++)
+    {
+        cout<< joined_compress[i].temp_media<< "\t"<< joined_compress[i].err_temp_media<<endl;
+        cout<< joined_compress[i].b_ang<< "\t"<< joined_compress[i].err_b_ang<<endl;
+        cout<< joined_compress[i].n_moli<< "\t"<< joined_compress[i].err_n_moli<<endl;
     }
     return 0;
 }
