@@ -83,7 +83,7 @@ int main()
         cout << temperature_compress[i].temp_media << "+/-" << temperature_compress[i].err_temp_media << "\t" << temperature_decompress[i].temp_media << "+/-" << temperature_decompress[i].err_temp_media << endl;
     }
 
-    //TEST calcolo di moli da tutti i dati tramite terne
+    //TEST calcolo di moli da tutti i dati tramite terne, sono volume di siringa
     auto moli_tot = get_moli(compressione);
 
     for (auto d : moli_tot)
@@ -91,21 +91,72 @@ int main()
         cout << d.n_moli << "+/-" << d.err_n_moli << endl;
     }
 
+    //Calcola le info di interpolazione grafici 1/p e v
     auto interpolaz_compress = get_interpolazioni(compressione_sc);
     auto interpolaz_decompress = get_interpolazioni(decompressione_sc);
     auto interpolazioni_compress_conf = get_interpolazioni(compressione_conf_sc);
     auto interpolazioni_decompress_conf = get_interpolazioni(decompressione_conf_sc);
 
+    //Associa la giusta temperatura calcolata dal giusto numero di punti
     auto joined_compress = join_info(interpolaz_compress, temperature_compress);
     auto joined_decompress = join_info(interpolaz_decompress, temperature_decompress);
     auto joined_compress_conf = join_info(interpolazioni_compress_conf, temperature_compress_part);
     auto joined_decompress_conf = join_info(interpolazioni_decompress_conf, temperature_decompress_part);
 
-    for ( int i= 0; i< joined_compress.size(); i++)
+    //Stampa tabella compressione e decompressione per tutte le stime di fit
+    cout << "Tabella compressioni" << endl;
+    cout << "inedx\ttemp\taintercetta\tbangolare\tmoli\tsigmapost" << endl;
+    for (int i = 0; i < joined_compress.size(); i++)
     {
-        cout<< joined_compress[i].temp_media<< "\t"<< joined_compress[i].err_temp_media<<endl;
-        cout<< joined_compress[i].b_ang<< "\t"<< joined_compress[i].err_b_ang<<endl;
-        cout<< joined_compress[i].n_moli<< "\t"<< joined_compress[i].err_n_moli<<endl;
+        auto &temp = joined_compress[i];
+        cout << i << "\t" << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.a_intercetta << "+/-" << temp.err_a_intercetta << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << "\t" << temp.n_moli << "+/-" << temp.err_n_moli << "\t" << temp.sigma_y_post << endl;
     }
+
+    cout << "Tabella decompressioni" << endl;
+    cout << "inedx\ttemp\taintercetta\tbangolare\tmoli\tsigmapost" << endl;
+    for (int i = 0; i < joined_decompress.size(); i++)
+    {
+        auto &temp = joined_decompress[i];
+        cout << i << "\t" << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.a_intercetta << "+/-" << temp.err_a_intercetta << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << "\t" << temp.n_moli << "+/-" << temp.err_n_moli << "\t" << temp.sigma_y_post << endl;
+    }
+
+    //Salva le info per fare grafici, temperatura e coeff angolare ricavato precedentemente
+    ofstream moli_d("../Dati/Dati_moli/moli_decompress.txt");
+    for (int i = 0; i < joined_decompress.size(); i++)
+    {
+        auto &temp = joined_decompress[i];
+        moli_d << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << endl;
+    }
+    ofstream moli_c("../Dati/Dati_moli/moli_compress.txt");
+    for (int i = 0; i < joined_compress.size(); i++)
+    {
+        auto &temp = joined_compress[i];
+        moli_c << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << endl;
+    }
+
+    //stampa di campioni lento e veloce, per verificare che siano la stessa cosa, più o meno
+    //NON SERVE A INTERPOLAZIONE
+    ofstream moli_c_conf("../Dati/Dati_moli/moli_compress_conf.txt");
+    for (int i = 0; i < joined_compress_conf.size(); i++)
+    {
+        auto &temp = joined_compress_conf[i];
+        moli_c_conf << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << endl;
+    }
+    ofstream moli_d_conf("../Dati/Dati_moli/moli_decompress_conf.txt");
+    for (int i = 0; i < joined_decompress_conf.size(); i++)
+    {
+        auto &temp = joined_decompress_conf[i];
+        moli_d_conf << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << endl;
+    }
+    // fine stampa
+    cout << ttest_campioni( joined_decompress,joined_compress) << endl;
+
+    auto moli_interpolatez_compress = interpolazione_moli(joined_compress);
+    auto moli_interpolatez_decompress = interpolazione_moli(joined_decompress);
+    cout << "Da interpolazione generale" << endl
+         << moli_interpolatez_compress.n_moli << "+/-" << moli_interpolatez_compress.err_n_moli << endl
+         << moli_interpolatez_decompress.n_moli << "+/-" << moli_interpolatez_decompress.err_n_moli << endl;
+    auto comp_moli = comp(moli_interpolatez_compress.n_moli, moli_interpolatez_decompress.n_moli, moli_interpolatez_compress.err_n_moli, moli_interpolatez_decompress.err_n_moli);
+    cout << "Compatibilità fra moli compress e decompress" << comp_moli << endl;
     return 0;
 }

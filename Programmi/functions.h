@@ -6,7 +6,7 @@
 using namespace std;
 
 double r_gas = 8.314462618;
-double r_gas_convertita=84.754 /*84.78890475219254*/;
+double r_gas_convertita = 84.754 /*84.78890475219254*/;
 double g = 9.806;
 
 //legge i file da Dati/Dati_Grezzi secondo quanto detto da mappa.txt
@@ -172,6 +172,7 @@ vector<info> get_interpolazioni(vector<raw_data> &dati)
         temp_info.err_b_ang = sigma_b(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
         temp_info.a_intercetta = a_intercetta_err_uguali(reciproco(dati[i].pressure), dati[i].volume);
         temp_info.err_a_intercetta = sigma_a(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
+        temp_info.sigma_y_post = sigma_y_posteriori(reciproco(dati[i].pressure), dati[i].volume);
 
         infos.push_back(temp_info);
     }
@@ -188,16 +189,52 @@ vector<info> join_info(vector<info> &interpolazioni, vector<info> &temperature)
         temp_joining.temp_media = temperature[i].temp_media;
         temp_joining.err_temp_media = temperature[i].err_temp_media;
         temp_joining.a_intercetta = interpolazioni[i].a_intercetta;
-        temp_joining.err_a_intercetta = interpolazioni[i].a_intercetta;
+        temp_joining.err_a_intercetta = interpolazioni[i].err_a_intercetta;
         temp_joining.b_ang = interpolazioni[i].b_ang;
         temp_joining.err_b_ang = interpolazioni[i].err_b_ang;
         temp_joining.n_moli = interpolazioni[i].b_ang / (r_gas_convertita * temperature[i].temp_media);
         temp_joining.err_n_moli = sqrt(pow(1. / (r_gas_convertita * temperature[i].temp_media), 2) * pow(temp_joining.err_b_ang, 2) + pow((-1. / pow(temperature[i].temp_media, 2)) * (temp_joining.b_ang / r_gas_convertita), 2) * pow(temperature[i].err_temp_media, 2));
-       //temp_joining.err_n_moli = sqrt(pow(1. / (r_gas_convertita * temperature[i].temp_media), 2) * pow(temp_joining.err_b_ang, 2) + pow((-1. / pow(temperature[i].temp_media, 2)) * (temp_joining.b_ang / r_gas_convertita), 2) * pow(0.1, 2));
+        //temp_joining.err_n_moli = sqrt(pow(1. / (r_gas_convertita * temperature[i].temp_media), 2) * pow(temp_joining.err_b_ang, 2) + pow((-1. / pow(temperature[i].temp_media, 2)) * (temp_joining.b_ang / r_gas_convertita), 2) * pow(0.1, 2));
+        temp_joining.sigma_y_post = interpolazioni[i].sigma_y_post;
 
         temp_info.push_back(temp_joining);
     }
     return temp_info;
 }
 
-//stampare i dati delle interpolazioni 
+info interpolazione_moli(vector<info> &joined)
+{
+    info temp_infoz;
+    vector<double> x;
+    vector<double> y, err_y;
+    for (auto d : joined)
+    {
+        x.push_back(d.temp_media);
+        y.push_back(d.b_ang);
+        err_y.push_back(d.err_b_ang);
+    }
+    temp_infoz.b_ang = b_angolare(x, y, err_y);
+    temp_infoz.err_b_ang = sigma_b(x, y, err_y);
+    temp_infoz.a_intercetta = a_intercetta(x, y, err_y);
+    temp_infoz.err_a_intercetta = sigma_a(x, y, err_y);
+    temp_infoz.n_moli = b_angolare(x, y, err_y) * g * 0.01 / r_gas;
+    temp_infoz.err_n_moli = sigma_b(x, y, err_y) * g * 0.01 / r_gas;
+    return temp_infoz;
+}
+
+double ttest_campioni(vector<info> &camp1, vector<info> &camp2)
+{
+    vector<double> x;
+    vector<double> y;
+    for (auto d : camp1)
+    {
+        x.push_back(d.n_moli);
+    }
+    for (auto c : camp2)
+    {
+        y.push_back(c.n_moli);
+    }
+    return tstudent_campioni(x, y);
+}
+
+//stampare i dati delle interpolazioni
