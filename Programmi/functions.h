@@ -43,6 +43,22 @@ vector<raw_data> load_data(string mappa)
     return loaded_data;
 }
 
+//lege nello specifico le isocore
+raw_data get_isocora(string file_name)
+{
+    raw_data temp_out;
+    ifstream isocora(file_name);
+    double t, p, err;
+    while (isocora >> t >> p >> err)
+    {
+        temp_out.temp.push_back(t);
+        temp_out.pressure.push_back(p);
+        temp_out.err_pressione.push_back(err);
+    }
+
+    return temp_out;
+}
+
 //Ritorna struttura di triplette in compressione.
 vector<raw_data> get_compression(vector<raw_data> &raw, vector<double> &indexes)
 {
@@ -219,6 +235,9 @@ info interpolazione_moli(vector<info> &joined)
     temp_infoz.err_a_intercetta = sigma_a(x, y, err_y);
     temp_infoz.n_moli = b_angolare(x, y, err_y) * g * 0.01 / r_gas;
     temp_infoz.err_n_moli = sigma_b(x, y, err_y) * g * 0.01 / r_gas;
+    temp_infoz.testchi = test_chi(x, y, err_y);
+    temp_infoz.testpearson = pearson(x, y);
+    temp_infoz.sigma_b_post = sigma_b_posteriori(x,y);
     return temp_infoz;
 }
 
@@ -237,4 +256,13 @@ double ttest_campioni(vector<info> &camp1, vector<info> &camp2)
     return tstudent_campioni(x, y);
 }
 
-//stampare i dati delle interpolazioni
+//Compatibilità per valutare reversibilità compressioni e edecompressioni
+vector<double> quasi_statiche(vector<info> &coeff_compress, vector<info> &coeff_decompress)
+{
+    vector<double> temp_comp;
+    for (int i = 0; i < coeff_compress.size(); i++)
+    {
+        temp_comp.push_back(comp_3(coeff_compress[i].b_ang, coeff_decompress[i].b_ang, coeff_compress[i].err_b_ang, coeff_decompress[i].err_b_ang));
+    }
+    return temp_comp;
+}

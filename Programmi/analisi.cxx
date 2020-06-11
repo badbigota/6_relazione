@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <unistd.h>
 #include "functions.h"
 
 using namespace std;
@@ -149,7 +150,6 @@ int main()
         moli_d_conf << temp.temp_media << "+/-" << temp.err_temp_media << "\t" << temp.b_ang << "+/-" << temp.err_b_ang << endl;
     }
     // fine stampa
-    cout << ttest_campioni( joined_decompress,joined_compress) << endl;
 
     auto moli_interpolatez_compress = interpolazione_moli(joined_compress);
     auto moli_interpolatez_decompress = interpolazione_moli(joined_decompress);
@@ -158,5 +158,62 @@ int main()
          << moli_interpolatez_decompress.n_moli << "+/-" << moli_interpolatez_decompress.err_n_moli << endl;
     auto comp_moli = comp(moli_interpolatez_compress.n_moli, moli_interpolatez_decompress.n_moli, moli_interpolatez_compress.err_n_moli, moli_interpolatez_decompress.err_n_moli);
     cout << "Compatibilità fra moli compress e decompress" << comp_moli << endl;
+
+    cout << endl;
+    cout << "T-Student" << endl;
+    cout << ttest_campioni(joined_decompress, joined_compress) << endl;
+
+    cout << endl;
+    cout << "T_0 compressione" << endl;
+
+    double propagazionet0c;
+    double unoc = (1. / moli_interpolatez_compress.b_ang);
+    double duec = (moli_interpolatez_compress.a_intercetta / pow(moli_interpolatez_compress.b_ang, 2));
+    double covc = 304.200 * pow(moli_interpolatez_compress.err_b_ang, 2);
+    propagazionet0c = sqrt(pow(unoc, 2) * pow(moli_interpolatez_compress.err_a_intercetta, 2) + pow(duec, 2) * pow(moli_interpolatez_compress.err_b_ang, 2) + (2 * unoc * duec * covc));
+    cout << moli_interpolatez_compress.a_intercetta / moli_interpolatez_compress.b_ang << "\t" << propagazionet0c << endl;
+     cout<< "Sigma moli posteriori" <<endl;
+    cout << moli_interpolatez_compress.sigma_b_post/r_gas_convertita<<endl;
+
+    cout << endl;
+    sleep(50); //non so perchè non funziona :(
+    cout << "T_0 decompressione" << endl;
+    double propagazionet0d;
+    double unod = (1. / moli_interpolatez_decompress.b_ang);
+    double dued = (moli_interpolatez_decompress.a_intercetta / pow(moli_interpolatez_decompress.b_ang, 2));
+    double covd = 303.109 * pow(moli_interpolatez_decompress.err_b_ang, 2);
+    propagazionet0d = sqrt(pow(unod, 2) * pow(moli_interpolatez_decompress.err_a_intercetta, 2) + pow(dued, 2) * pow(moli_interpolatez_decompress.err_b_ang, 2) + (2 * unod * dued * covd));
+    cout << moli_interpolatez_decompress.a_intercetta / moli_interpolatez_decompress.b_ang << "\t" << propagazionet0d << endl;
+    cout<< "Sigma moli posteriori" <<endl;
+    cout << moli_interpolatez_decompress.sigma_b_post/r_gas_convertita<<endl;
+
+    /*
+Valuta compatibilità e quasi stticità compress e decompress
+ */
+    cout << "Calcolo quasi staticità" << endl;
+    auto quasi_staticita = quasi_statiche(interpolaz_compress, interpolaz_decompress);
+    for (int i = 0; i < quasi_staticita.size(); i++)
+    {
+        cout << i << "\t";
+    }
+    cout << endl;
+    for (int i = 0; i < quasi_staticita.size(); i++)
+    {
+        cout << quasi_staticita[i] << "\t";
+    }
+    cout << endl;
+
+    /*Analisi dati isocore
+    ----------------------------------------------------------------------------------------------
+    */
+
+    auto isocora8 = get_isocora("../Dati/isocora.txt");
+    auto isocora21 = get_isocora("../Dati/isocora21.txt");
+
+    cout << "Valori fit isocore" << endl;
+    cout << "B errB\tA errA\tchi\tp\ttstud" << endl;
+    cout << b_angolare(isocora8.temp, isocora8.pressure, isocora8.err_pressione) << "\t" << sigma_b(isocora8.temp, isocora8.pressure, isocora8.err_pressione) << "\t" << a_intercetta(isocora8.temp, isocora8.pressure, isocora8.err_pressione) << "\t" << sigma_a(isocora8.temp, isocora8.pressure, isocora8.err_pressione) << "\t" << test_chi(isocora8.temp, isocora8.pressure, isocora8.err_pressione) << "\t" << pearson(isocora8.temp, isocora8.pressure) << "\t" << student(isocora8.temp, isocora8.pressure) << endl;
+    cout << b_angolare(isocora21.temp, isocora21.pressure, isocora21.err_pressione) << "\t" << sigma_b(isocora21.temp, isocora21.pressure, isocora21.err_pressione) << "\t" << a_intercetta(isocora21.temp, isocora21.pressure, isocora21.err_pressione) << "\t" << sigma_a(isocora21.temp, isocora21.pressure, isocora21.err_pressione) << "\t" << test_chi(isocora21.temp, isocora21.pressure, isocora21.err_pressione) << "\t" << pearson(isocora21.temp, isocora21.pressure) << "\t" << student(isocora21.temp, isocora21.pressure) << endl;
+
     return 0;
 }

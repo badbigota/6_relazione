@@ -9,6 +9,7 @@ struct raw_data
     vector<double> pressure;
     vector<double> volume;
     vector<double> err_volume;
+    vector<double> err_pressione;
 };
 
 //Strutura per le informazioni generali per campione
@@ -21,7 +22,10 @@ struct info
     double err_temp_media;
     double b_ang;
     double err_b_ang;
+    double sigma_b_post;
     double a_intercetta;
     double err_a_intercetta;
     double sigma_y_post;
+    double testchi;
+    double testpearson;
 };

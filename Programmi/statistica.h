@@ -358,6 +358,16 @@ double sigma_b_posteriori(vector<double> dati_x, vector<double> dati_y)
 
     return sigma_b_p;
 }
+//Errore su coeff. a di y=a+bx con errori tutti diversi (intercetta)
+double sigma_a(vector<double> dati_x, vector<double> dati_y, vector<double> errori_y)
+{
+    double sum = 0;
+    for (int i = 0; i < dati_x.size(); i++)
+    {
+        sum = sum + (pow(dati_x[i], 2) / pow(errori_y[i], 2)); //ho cambiato FABIO
+    }
+    return sqrt((1 / delta(dati_x, errori_y)) * sum);
+}
 
 //Errore su coeff. b di y=a+bx con errori tutti diversi (coeff. ang.)
 double sigma_b(vector<double> dati_x, vector<double> dati_y, vector<double> errori_y)
@@ -398,9 +408,19 @@ double student(vector<double> x, vector<double> y)
     return t;
 }
 
-
 //Compatibilità avendo due valori medi e i sigma relativi
 double comp_3(double a, double b, double sigma_a, double sigma_b)
 {
     return abs(a - b) / sqrt(pow(sigma_a, 2) + pow(sigma_b, 2));
+}
+
+double dstd_cumulativa(vector<double> x, vector<double> y)
+{
+    double cumulative = ((x.size() - 1) * pow(dstd(x), 2) + (y.size() - 1) * pow(dstd(y), 2)) / (x.size() + y.size() - 2);
+    return sqrt(cumulative);
+}
+double tstudent_campioni(vector<double> x, vector<double> y)
+{
+    double t = (media(x) - media(y)) / (dstd_cumulativa(x, y) * sqrt(1. / x.size() + 1. / y.size()));
+    return t;
 }
