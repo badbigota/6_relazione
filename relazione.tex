@@ -1,0 +1,329 @@
+% Marco l'Eccellente Dio della Modestia
+% !TeX encoding = utf8
+% !TeX program = pdflatex
+% !TeXpellcheck = it_IT
+
+\documentclass[a4paper,11pt,oneside]{article} 
+\usepackage{relazioni}
+\usepackage{imakeidx}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{blindtext}
+\usepackage{titletoc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rccol}
+\usepackage{amssymb}
+
+
+
+\usepackage{hyperref}
+
+\usepackage[export]{adjustbox}
+\usepackage[export]{adjustbox}
+\hypersetup{
+%    colorlinks=false,
+} 
+
+\graphicspath{{Figure/}} 
+%https://www.overleaf.com/learn/latex/Indices
+%\makeindex[columns=3, title=Alphabetical Index, intoc]
+
+\setlength{\parindent}{0em}
+
+\begin{document}
+\input{Front-matter/Frontespizio}
+\clearpage
+\tableofcontents
+\addtocontents{toc}{~\hfill{Pagina}\par}
+\contentsmargin{6em}
+\dottedcontents{section}[1em]{\bigskip}{2em}{1pc}
+\dottedcontents{subsection}[3em]{\smallskip}{3em}{1pc}
+\dottedcontents{subsubsection}[5em]{\smallskip}{4em}{1pc}
+
+
+\newpage
+
+
+\section{Obiettivo esperienza}
+L'obiettivo dell'esperienza è la caratterizzazione
+
+\section{Apparato Sperimentale}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{ApparatoSperimentale.pdf}
+    \caption{Apparato Sperimentale}
+    \label{fig:apparato_sperimentale}
+\end{figure}
+
+L'apparato sperimentale è composto dai seguenti elementi: 
+\begin{enumerate}[label=\textbf{\alph*.}]
+    \item Sensori/ strumentazione di acquisizione dati
+    \item Valvola a \textbf{T}
+    \item Sensore di temperatura
+    \item Siringa monouso da $\SI{20}{\centi\meter\cubed}$ per compiere le compressioni ed espansioni
+    \item Resistenza elettrica
+    \item Agitatore meccanico
+    \item Tubicino di plastica immerso nel bagno termico e collegato ai sensori
+    \item Bagno termico con acqua e inizialmente ghiaccio
+    \item Contenitore Dewar isolante
+    \item Pareti adiabatiche isolanti
+\end{enumerate}
+
+\section{Presa dati}
+Tutti i dati acquisiti ad intervalli di tempo regolari sono stati forniti dalla strumentazione elettronica dell'apparato.Per ogni misurazione si sono registrati i valori di pressione, temperatura e volume. Quest'ultimo è stato calcolato dal software a partire dalla posizione dello stantuffo della siringa, poi moltiplicata per la sezione della stessa ma non considerando nel computo il volume di gas contenuto nei tubicini, in quanto superfluo ai fini dell'esperienza. Nonostante ciascun sensore, rispetto agli altri, sia indipendente nell'acquisizione, è comunque possibile che si crei una correlazione nel momento dell'acquisizione del segnale elettrico a seconda di come i circuiti sono tra loro collegati.\newline
+
+Si sono realizzate alcune prese dati variando di volta in volta la temperatura dell'acqua nella quale il sistema era immerso, cercando di mantenere il più possibile ogni dispersione termica, tramite l'impiego del vaso Dewar. Con il contenitore inizialmente a temperatura prossima agli $\SI{0}{\degree}$ centigradi, per via del ghiaccio presente al suo interno, si è effettuata una prima presa dati. Successivamente si è aumentata la temperatura del bagno termico, misurata dal sensore, tramite la resistenza immersa di $\approx\SI{10}{\degree}$. Assestatasi la temperatura al valore prefissato si è rieseguita la presa dati. Tale processo si è ripetuto per tutte le temperature riportate in Tabella \ref{tab:camp_temp}. Si specifica che la presa dati si è svolta muovendo opportunamente una manovella in modo da controllare la compressione e la decompressione della siringa, mescolando occasionalmente il liquido all'interno del Dewer tramite l'agitatore. Si noti che i due campioni finali realizzati nel momento in cui la temperatura era ancora a $\SI{25}{\celsius}$ gradi si differenziano per modalità di presa dati, rispettivamente con una variazione più lenta e con una variazione più veloce rispetto a quelle mediamente usate per tutti gli altri campioni.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        Campione & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $2_{lenta}$ & $2_{veloce}$\\\hline
+        T [$\si{\celsius}$] & $\approx5$ & $\approx15$ & $\approx25$ & $\approx35$ & $\approx45$ & $\approx55$ & $\approx25$ & $\approx25$ \\\hline
+    \end{tabular}
+    \caption{Temperature dei campioni}
+    \label{tab:camp_temp}
+\end{table}
+
+%Tabella campioni e temperature approssimate, solo per dare un idea tra numero campione e temperatura
+
+
+\section{Analisi e Discussione}
+\subsection{Fasi compressione e decompressione}
+%separazione fasi compressione e decompressione
+%   - perchè si separano? che motivi ci sono
+Come operazione preliminare è stato necessario suddividere i dati a seconda della fase di compressione o decompressione a cui essi appartengono. Questa scelta è stata necessaria per verificare successivamente se le due fasi fossero tra loro compatibili, ovvero che queste trasformazioni fossero approssimativamente reversibili e quasi statiche.
+
+Per dividere opportunamente i dati in sottocampioni, da ora in poi chiamati campioni in compressione e decompressione, si sono osservati i grafici dei dati grezzi. Si è osservato che i valori della pressione nella prima fase del ciclo aumentano in funzione del numero della misurazione, per poi assestarsi e rimanere costanti prima dell'inizio della fase di decompressione. Sebbene ci siano delle piccole variazioni di circa $\SI{0.01}{\centi\meter\cubed}$ nel range di misurazioni in cui si osserva un volume costante, si può affermare con certezza che proprio in questa fase cambia il verso di trasformazione, da compressione si inizia a decomprimere il gas. Si è pertanto scelto di considerare il numero della misurazione intermedio del range nel quale la pressione risultava pressoché costante per suddividere i dati grezzi. Tale scelta ha permesso di separare le due fasi anche per le altre grandezze misurate. Per tale considerazione non si sono utilizzate le informazioni date dall'andamento del volume in quanto soggetto a maggiori variazioni nel range in cui invece la pressione rimaneva costante. Si ipotizza che questa variabilità del volume sia dovuta alla presenza di uno stantuffo di gomma nella siringa, utilizzato come guaina a tenuta stagna per prevenire fuoriuscite di gas, che varia il suo volume in quanto costituito da materiale comprimibile, ma non la pressione in quanto non altera significativamente il volume del gas.
+
+%come capire per tagliare decompress e compress
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Pressione_Volume.pdf}
+    \caption{Pressioni e Volumi Primo Campione}
+    \label{fig:campione2}
+\end{figure}
+
+
+
+\subsection{Stime della temperatura}
+%stima temperatura
+%   - commento perchè varia nonostante debba essere costante perchè isolata
+%   - non fisictà di picco
+%   - reiezione ad occhio dal picco
+%   - spiegazione perchè scende (non completamente adiabatico il contenitore, cerca equilibrio con ambiente)
+%   - media è quella più appropiata
+Una prima analisi dei dati relativi alle temperature mostrano talvolta una leggera variazione di questi ultimi durante tutte e due le fasi della trasformazione. Si osserva infatti che dispersione massima di $\approx \SI{1.4}{\kelvin}$, soprattutto nei campioni 2, 3, 5 e 6. 
+
+Si riporta, a titolo di esempio per tutti i campioni in cui si verifica questo fenomeno di variazione iniziale della temperatura, il Grafico \ref{fig:campione2}. Si può osservare che nelle prime misurazioni la temperatura non rimane costante, bensì dapprima diminuisce, poi aumentare per assestarsi infine al valore asintotico. La variazione è di poco meno di $\SI{2}{\kelvin}$, poco significativa se messa in confronto con il valore asintotico. %intendo err percentuale piccolo
+Si ipotizza che queste variazioni, che si verificano anche per altri campioni e soltanto nelle prime misurazioni siano attribuibili ad un rimescolamento del liquido da parte dell'operatore. È ragionevole che il liquido presenti differenze di temperatura dell'ordine $1-2$ gradi Kelvin proprio per come è costruito il sistema e che il rimescolamento del liquido porti ad una variazione della temperatura misurata dalla termocoppia. 
+Si è deciso comunque di stimare la temperatura dell'isoterma come media dei temperature misurate per tutti i campioni, avendo cura però di non considerare i valori precedenti ad una certa soglia arbitrariamente fissata per i campioni che presentano un picco. In particolare nel secondo campione la media è stata calcolata a partire dalla 300esima misura.
+
+Specificatamente per il secondo campione, si nota la presenza di alcuni punti attorno alla 800esima misurazione che si discostano fortemente dalle temperature circostanti. Ciò è probabilmente imputabile ad un errore di lettura del sensore. Nonostante ciò si è deciso di non scartare tali valori.
+
+In generale si nota che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur contenitore isolante, vi sono comunque dispersioni di calore dovute alle pareti non perfettamente isolanti, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione.
+
+
+Vengono riportate le temperature stimate per ogni campione.
+%N, temp unica
+%1 279.063+/-0.00092050
+%2 288.77+/-0.000528367
+%3 298.147+/-0.00051561
+%4 308.251+/-0.00110727
+%5 317.593+/-0.00250732
+%6 327.084+/-0.00831812
+%2 298.147+/-0.00051561
+%2_l 298.307+/-0.00060770
+%2_v 298.359+/-0.00119439
+
+%grafico dettagli per picco temperature
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{temperatura_secondo.pdf}
+    \caption{Temperature secondo campione}
+    \label{fig:campione2}
+\end{figure}
+
+%precednetenetemenete
+\subsection{Analisi delle fasi di compressione e decompressione}
+Un'osservazione generale dei dati ha mostrato che nella parte iniziale del ciclo, corrispondente alla prima parte della fase di decompressione, il volume rimane costante per circa 30 misurazioni. Dato che durante la presa dati la manovella utilizzata per far variare il volume è stata mossa in maniera pressoché costante, ci si aspetta che anche il volume cambi costantemente in dipendenza alla rotazione della manovella. Si è ipotizzato che nella parte iniziale ci siano stati dei giri a vuoto della manovella a causa forse della non rigidità del materiale utilizzato per la tenuta stagna, come già precedentemente affermato.
+Si è proceduto alla reiezione di tali dati.
+Per ciascun campione, ciascuna terna i-esimo di pressione, volume e temperatura è stata sottoposta ad un duplice controllo: se la pressione i-esima risultasse maggiore di 3.921 e invece  il volume maggiore di 22.6 allora la terna è stata considerata nei successivi calcoli e valutazioni, altrimenti è stata scartata poiché facente parte degli intervalli in cui o volume o pressione rimane constante.
+
+%reiezione pressione
+% analisi su scarti cosa rivela? viene più preciso? DA FARE
+
+Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di 1/P e sull'asse delle ordinate il valore del rispettivo volume misurato.Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti:
+\begin{equation*}
+    P\cdot V = n\cdot R\cdot T
+\end{equation*}
+correlata all'assunzione che la trasformazione compiuta durante la presa dati sia isoterma. Sapendo che $n$, il numero di moli del gas considerato,ed $R$, la constante dei gas, rimangono costanti durante il ciclo, si ottiene che $P \cdot V = cost$. La rappresentazione dei dati come prima specificato, risulta dunque  giustificata al fine di testare l'ipotesi che l'aria sia un gas ideale.
+Vengono di seguito riportati i 6 grafici relativi a ciascun campione.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Zero_Clapeyron.pdf}
+    \caption{Temperature primo campione}
+    \label{fig:campionezero_clapeyron}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Uno_Clapeyron.pdf}
+    \caption{Temperature secondo campione}
+    \label{fig:campioneuno_clapeyron}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Due_Clapeyron.pdf}
+    \caption{Temperature terzo campione}
+    \label{fig:campionedue_clapeyron}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Tre_Clapeyron.pdf}
+    \caption{Temperature quarto campione}
+    \label{fig:campionetre_clapeyron}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Quattro_Clapeyron.pdf}
+    \caption{Temperature quinto campione}
+    \label{fig:campionequattro_clapeyron}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Cinque_Clapeyron.pdf}
+    \caption{Temperature sesto campione}
+    \label{fig:campionecinque_clapeyron}
+\end{figure}
+I grafici generalmente rispettano un andamento concorde con le aspettative teoriche.l fit linare effettuato per le due fasi, i cui parametri vengono ri Il valore del coefficiente angolare corrisponde dunque a $n \cdot R \cdot T$ Al fine di far emergere eventuali """"problemi di non staticità""""" sono stati valutati tramite la compatibilità i coefficiente angolare ottenuti dal fit lineare dei grafici nella fase di compressione e quelli ottenuti durante la fase di decompressione. Per il primo e il terzo campione si è ottenuto un valore di $\lambda$ che mostra una non compatibilità delle due differenti fasi. Per tutti gli altri campioni si ha una compatibiltà ottima.
+L'analisi dell'intercetta riferita a tali dati mostra invece il volume del gas compreso nei tubicini e non considerato al fine dell'esperienza in quanto avrebbe comportato una traslazione dell'asse delle y. 
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+N^o campione & 0    & 1   & 2    & 3    & 4    & 5    \\ \hline
+$\lambda_{b_{comp}-b_{decomp}}$ & 7.09 & 0.9 & 0.17 & 8.64 & 1.00 & 0.10 \\ \hline
+\end{tabular}
+\end{table}
+
+%analisi compressionene e decompressione, quale funzione dovrebbero seguire
+% ipotesi che è gas ideale?
+%   - come scartare i dati, solo quando sono costanti i volumi e le pressioni
+%   - spiegazione perchè li elimini, non è fisico, errore della siringa  e acquisizione dati, quali dati e quanti dati sono stati rimossi
+%   - analisi su scarti cosa rivela? viene più preciso? DA FARE
+%   - equazione rivela volume tubicini, non sono immersi, disperdono calore, anche la siringa non è in bagno termico
+%   - chi quaro gigantesco perchè? in confronot a gdl okay. anche se metti tutti i dati è okay-> non ci si può basare solo su chi quadro per verificare se il fit è okay
+%   - interpolazione lineare cosa indicano i vari coefficienti, stima err posteriori e confronto con quello a priori,
+%   - rho e tstudent su rho commenti
+%   - compressione è quasi statica? compatibilità fra coeff ang compress e decompress
+%   - si osserva che aumentando il campione aumenta il coeff angolare, banana deve essere così perchè dipende direttamente dalla temperatura
+%    - stima di numero di moli per ciascun fit in compressione e decompressione
+
+
+%analisi di tutti i coeff angolari in compressione e decompressione su stesso grafico in funzione di temperatura stimata
+%   - tutta la algebretta del cazzo che mostra come trovare lo zero assoluto
+%   - stima del valore di zero assoluto e commento a suo errore
+%   - perchè alcuni dati sono fuori dal fit e non vicini a quello che ci si aspetta-> errore in coeff angolare o temperatura?
+%    - stima moli da fit generale per vedere se sensato e compatibili con stime precedenti
+
+\subsection{Stima del numero di moli dalle terne}
+%stima di numero moli da tutte le triple p v e t e si vede che in questo caso sono minori perchè è solo quello dentro la siringa
+
+\subsection{Simulazione di isocora}
+%simulazione di isocora
+%   - come si sono scelti i volumi, ad occhio, così che ce ne fossero per tutti i 5 volumi di compressione e decompressione
+%   - verifica che è lineare come cambia il pressione in conforonto a temperatura
+%   - fit lineare e parametri 
+
+\subsection{Valutazione di quasi-staticità e reversibilità}
+%valutazione quasi-staticità di compressioni e decompressioni
+%   - compatibilità coeff angolari per comp decomp per tutte e 3
+%   - verifica quantitativa di differenza fra i 3 campioni-> lento compatte intorno a retta, normale è un pò separato, veloce sono separate
+
+\section{Conclusioni}
+
+\newpage
+\section{Appendice}
+\subsection{Ulteriori grafici a completamento di quelli riportati in Analisi e Discussione}
+\subsection{Formulario}
+\textbf{Media, deviazione standard, deviazione standard della media}
+\begin{align*}
+   % \begin{aligned}
+        \overline{x}&=\sum\limits_{i=1}^{N} \frac{x_{i}}{N}&
+        \sigma&=\sqrt{\frac{\sum\limits_{i=1}^{N} (x_{i}-\overline{x})^2}{N-1}}&
+        \sigma_{\overline{x}}&=\frac{\sigma}{\sqrt{N}}
+   % \end{aligned}
+\end{align*}\\
+
+\textbf{Media Ponderata}
+\begin{equation*}
+\label{eq:media_pond}
+    x_i=\frac{\sum_{i=1}^{N}\frac{x_i}{\sigma_{x_i}}}{\sum_{i=1}^{N}\frac{1}{\sigma_{x_i}}}
+\end{equation*}
+
+\textbf{Errore Media Ponderata}
+\begin{equation*}
+\label{eq:errore_media_pond}
+     \sigma_{x_i}=\sqrt{\frac{1}{\sum_{i=1}^{N}\frac{1}{\sigma_{i}^{2}}}}
+\end{equation*}
+
+\textbf{Formule per il metodo del minimo ${\chi}^{(2)}$}
+\begin{equation*}
+        \begin{cases}
+    a=&\frac{1}{\Delta}[(\sum\limits_{i=1}^{N}{x_{i}^{2}})\cdot(\sum\limits_{i=1}^{N}{y_{i}})-(\sum\limits_{i=1}^{N}{x_{i}})\cdot(\sum\limits_{i=1}^{N}{x_{i}y_{i}})] \\ 
+    b=&\frac{1}{\Delta }\cdot \left [N\cdot \left ( \sum\limits_{i=1}^{N}x_i y_i \right )-\left ( \sum\limits_{i=1}^{N}x_i \right )\cdot \left ( \sum\limits_{i=1}^{N}y_i \right )  \right ]\\
+    \Delta=& N\cdot \sum\limits_{i=1}^{N} x_i^{2} - \left ( \sum\limits_{i=1}^{N}x_i \right )^{2}\\
+    \end{cases}
+\end{equation*}
+\begin{equation*}
+    \begin{cases}
+    \sigma_{a}=&\sigma_{y}\cdot\sqrt{\frac{\sum_{i=1}^{N}{x_{i}^{2}}}{\Delta}} \\
+    \sigma_{b}=&\sigma_y\cdot \sqrt{\frac{N}{\Delta }}\\
+    \end{cases}
+    \label{equation:err_chi_quadro}
+\end{equation*}
+\\
+\newline
+\textbf{Formula di propagazione degli errori casuali}\\
+
+Sia z=($x_1$,...;$x_N$) funzione di N variabili casuali $x_1$,...,$x_N$ e sia ${x_i^\ast}$=($x_1^\ast$,...,$x_N^{\ast}$) l'insieme di tutti i valori veri associati a tali variabili, si ha 
+
+\begin{equation*}
+    \sigma_z^{2}\approx  \sum_{i=j=1}^{N}\left ( \frac{\partial z}{\partial x_i}\Big|_{x_i^{\ast}} \right )^{2}\cdot\sigma_{x_i}^{2} +\sum_{i=1,j=1,i\neq j}^{N}\left (\frac{\partial z }{\partial x_i}\Big|_{x_i^{\ast}} \right ) \cdot \left ( \frac{\partial z}{\partial x_j} \Big|_{x_j^{\ast}} \right )\cdot cov(x_i,x_j)\label{eq:prop_errori}
+\end{equation*}
+E' stato utilizzato il simbolo $\approx$ in quanto si è scelto di troncare al primo termine lo sviluppo in serie di Taylor.\\
+
+
+\textbf{Formula calcolo compatibilità}\\
+\begin{equation*}
+    \lambda=\frac{\left|a-b\right|}{\sqrt{\sigma^{2}_{a}+\sigma^{2}_{b}}}
+\end{equation*}\\
+\textbf{Coefficiente di correlazione di Pearson}\\
+\begin{equation*}
+    \rho=  \frac{\sum_{i=1}^{N}(x_i - \overline{x}
+    )(y_i - \overline{y})}{\sqrt{\sum_{i=1}^{N}(x_i -\overline{x})^2}\sqrt{\sum_{i=1}^{N}(y_i - \overline{y})^2}}
+\end{equation*}\textbf{
+}
+
+\section{Codici sorgente}
+%\subsection{Programmi}
+Si riportano i link ai codici sorgente impiegati per l'analisi.
+\begin{itemize}
+    \item \href{https://github.com/badbigota/6_relazione/blob/master/Programmi/analisi.cxx}{analisi.cxx} per la vera e propria analisi dati 
+    \item \href{https://github.com/badbigota/6_relazione/blob/master/Programmi/functions.h}{functions.h} per gli algoritmi usati
+    \item \href{https://github.com/badbigota/6_relazione/blob/master/Programmi/statistica.h}{statistica.h} per le funzioni statistiche impiegate
+    \item\href{https://github.com/badbigota/6_relazione/blob/master/Programmi/struct.h}{struct.h} per la definizione delle strutture di dati impiegate
+\end{itemize}
+
+\end{document}
