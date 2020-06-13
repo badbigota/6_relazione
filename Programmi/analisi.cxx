@@ -74,14 +74,18 @@ int main()
     vector<int> index_compr_part = {239, 0, 0};
     vector<int> index_decompr_part = {0, 0, 0};
 
-    auto temperature_compress = get_temperatura(compressione, index_compr);
-    auto temperature_decompress = get_temperatura(decompressione, index_depress);
-    auto temperature_compress_part = get_temperatura(compressione_conf, index_compr_part);
-    auto temperature_decompress_part = get_temperatura(decompressione_conf, index_decompr_part);
+    auto temperature_compress = get_temperatura(isoterme, index_compr);//DÓRA IN AVANTI SOLO UNA TEMEPRATURA, PRIMA ERA compressione, index_compr
+    auto temperature_decompress = get_temperatura(isoterme, index_compr);//
+    auto temperature_compress_part = get_temperatura(isoterme_confronto, index_compr_part);//anche qui solo una temperatura
+    auto temperature_decompress_part = get_temperatura(isoterme_confronto, index_compr_part);
 
     for (int i = 0; i < temperature_compress.size(); i++)
     {
-        cout << temperature_compress[i].temp_media << "+/-" << temperature_compress[i].err_temp_media << "\t" << temperature_decompress[i].temp_media << "+/-" << temperature_decompress[i].err_temp_media << endl;
+        cout << temperature_compress[i].temp_media << "+/-" << temperature_compress[i].err_temp_media << "\t" << temperature_decompress[i].temp_media << "+/-" << temperature_decompress[i].err_temp_media << "\t" << comp(temperature_compress[i].temp_media, temperature_decompress[i].temp_media, temperature_compress[i].err_temp_media, temperature_decompress[i].err_temp_media) << endl;
+    }
+    for (int i = 0; i < temperature_compress_part.size(); i++)
+    {
+        cout << temperature_compress_part[i].temp_media << "+/-" << temperature_compress_part[i].err_temp_media << "\t" << temperature_decompress_part[i].temp_media << "+/-" << temperature_decompress_part[i].err_temp_media << "\t" << comp(temperature_compress_part[i].temp_media, temperature_decompress_part[i].temp_media, temperature_compress_part[i].err_temp_media, temperature_decompress_part[i].err_temp_media) << endl;
     }
 
     //TEST calcolo di moli da tutti i dati tramite terne, sono volume di siringa
@@ -172,8 +176,8 @@ int main()
     double covc = 304.200 * pow(moli_interpolatez_compress.err_b_ang, 2);
     propagazionet0c = sqrt(pow(unoc, 2) * pow(moli_interpolatez_compress.err_a_intercetta, 2) + pow(duec, 2) * pow(moli_interpolatez_compress.err_b_ang, 2) + (2 * unoc * duec * covc));
     cout << moli_interpolatez_compress.a_intercetta / moli_interpolatez_compress.b_ang << "\t" << propagazionet0c << endl;
-     cout<< "Sigma moli posteriori" <<endl;
-    cout << moli_interpolatez_compress.sigma_b_post/r_gas_convertita<<endl;
+    cout << "Sigma moli posteriori" << endl;
+    cout << moli_interpolatez_compress.sigma_b_post / r_gas_convertita << endl;
 
     cout << endl;
     sleep(50); //non so perchè non funziona :(
@@ -184,8 +188,8 @@ int main()
     double covd = 303.109 * pow(moli_interpolatez_decompress.err_b_ang, 2);
     propagazionet0d = sqrt(pow(unod, 2) * pow(moli_interpolatez_decompress.err_a_intercetta, 2) + pow(dued, 2) * pow(moli_interpolatez_decompress.err_b_ang, 2) + (2 * unod * dued * covd));
     cout << moli_interpolatez_decompress.a_intercetta / moli_interpolatez_decompress.b_ang << "\t" << propagazionet0d << endl;
-    cout<< "Sigma moli posteriori" <<endl;
-    cout << moli_interpolatez_decompress.sigma_b_post/r_gas_convertita<<endl;
+    cout << "Sigma moli posteriori" << endl;
+    cout << moli_interpolatez_decompress.sigma_b_post / r_gas_convertita << endl;
 
     /*
 Valuta compatibilità e quasi stticità compress e decompress
