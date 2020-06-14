@@ -86,8 +86,8 @@ Si sono realizzate alcune prese dati variando di volta in volta la temperatura d
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
         \hline
-        Campione & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $2_{lenta}$ & $2_{veloce}$\\\hline
-        T [$\si{\celsius}$] & $\approx5$ & $\approx15$ & $\approx25$ & $\approx35$ & $\approx45$ & $\approx55$ & $\approx25$ & $\approx25$ \\\hline
+        Campione & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $3_{lenta}$ & $3_{veloce}$\\\hline
+        \rowcolor[rgb]{0.85,0.85,0.85} T [$\si{\celsius}$] & $\approx5$ & $\approx15$ & $\approx25$ & $\approx35$ & $\approx45$ & $\approx55$ & $\approx25$ & $\approx25$ \\\hline
     \end{tabular}
     \caption{Temperature dei campioni}
     \label{tab:camp_temp}
@@ -97,7 +97,7 @@ Si sono realizzate alcune prese dati variando di volta in volta la temperatura d
 
 
 \section{Analisi e Discussione}
-\subsection{Fasi compressione e decompressione}
+\subsection{Fasi compressione e decompressione}\label{par:compress}
 %separazione fasi compressione e decompressione
 %   - perchè si separano? che motivi ci sono
 Come operazione preliminare è stato necessario suddividere i dati a seconda della fase di compressione o decompressione a cui essi appartengono. Questa scelta è stata necessaria per verificare successivamente se le due fasi fossero tra loro compatibili, ovvero che queste trasformazioni fossero approssimativamente reversibili e quasi statiche.
@@ -123,26 +123,33 @@ Per dividere opportunamente i dati in sottocampioni, da ora in poi chiamati camp
 %   - media è quella più appropiata
 Una prima analisi dei dati relativi alle temperature mostrano talvolta una leggera variazione di questi ultimi durante tutte e due le fasi della trasformazione. Si osserva infatti che dispersione massima di $\approx \SI{1.4}{\kelvin}$, soprattutto nei campioni 2, 3, 5 e 6. 
 
-Si riporta, a titolo di esempio per tutti i campioni in cui si verifica questo fenomeno di variazione iniziale della temperatura, il Grafico \ref{fig:campione2}. Si può osservare che nelle prime misurazioni la temperatura non rimane costante, bensì dapprima diminuisce, poi aumentare per assestarsi infine al valore asintotico. La variazione è di poco meno di $\SI{2}{\kelvin}$, poco significativa se messa in confronto con il valore asintotico. %intendo err percentuale piccolo
+Si riporta, a titolo di esempio per tutti i campioni in cui si verifica questo fenomeno di variazione iniziale della temperatura, il Grafico \ref{fig:campione2}. Si può osservare che nelle prime misurazioni la temperatura non rimane costante, bensì dapprima diminuisce, poi aumentare per assestarsi infine al valore asintotico. La variazione è di poco meno di $\SI{2}{\kelvin}$, poco significativa se messa in confronto con il valore a cui tende. %intendo err percentuale piccolo
 Si ipotizza che queste variazioni, che si verificano anche per altri campioni e soltanto nelle prime misurazioni siano attribuibili ad un rimescolamento del liquido da parte dell'operatore. È ragionevole che il liquido presenti differenze di temperatura dell'ordine $1-2$ gradi Kelvin proprio per come è costruito il sistema e che il rimescolamento del liquido porti ad una variazione della temperatura misurata dalla termocoppia. 
-Si è deciso comunque di stimare la temperatura dell'isoterma come media dei temperature misurate per tutti i campioni, avendo cura però di non considerare i valori precedenti ad una certa soglia arbitrariamente fissata per i campioni che presentano un picco. In particolare nel secondo campione la media è stata calcolata a partire dalla 300esima misura.
+Si è deciso comunque di stimare la temperatura dell'isoterma come media aritmetica delle temperature misurate per tutti i campioni, avendo cura però di non considerare i valori precedenti ad una certa soglia arbitrariamente fissata per i campioni che presentano un picco, ovvero un cambiamento anomalo. Ad esempio, nel secondo campione la media è stata calcolata a partire dalla 300esima misura. Gli errori assegnati alle stime delle temperature sono derivati dalla deviazione standard sulla media, motivo per cui gli errori percentuali sono di molto inferiori a 1\%.
 
 Specificatamente per il secondo campione, si nota la presenza di alcuni punti attorno alla 800esima misurazione che si discostano fortemente dalle temperature circostanti. Ciò è probabilmente imputabile ad un errore di lettura del sensore. Nonostante ciò si è deciso di non scartare tali valori.
 
-In generale si nota che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur contenitore isolante, vi sono comunque dispersioni di calore dovute alle pareti non perfettamente isolanti, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione.
+Altra osservazione derivata da un'attenta osservazione dei grafici, è che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur contenitore isolante, vi sono comunque dispersioni di calore dovute alle pareti non perfettamente isolanti, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione che vengono riportate nella Tabella \ref{tab:temp_unica}. 
 
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Campione} & \textbf{T} [$\si{\kelvin}$] \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $279.0630\pm0.0009$ \\ \hline
+        $2$ & $288.7700\pm0.0005$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $298.1470\pm0.0005$ \\ \hline
+        $4$ & $308.251\pm0.001$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $317.593\pm0.003$ \\ \hline
+        $6$ & $327.084\pm0.008$ \\ \hline \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $298.1470\pm0.0005$ \\ \hline
+        $3_{lenta}$ & $298.3070\pm0.0006$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3_{veloce}$ & $298.359\pm0.001$ \\ \hline
+    \end{tabular}
+    \caption{Temperature uniche per ciascun campione}
+    \label{tab:temp_unica}
+\end{table}
 
-Vengono riportate le temperature stimate per ogni campione.
-%N, temp unica
-%1 279.063+/-0.00092050
-%2 288.77+/-0.000528367
-%3 298.147+/-0.00051561
-%4 308.251+/-0.00110727
-%5 317.593+/-0.00250732
-%6 327.084+/-0.00831812
-%2 298.147+/-0.00051561
-%2_l 298.307+/-0.00060770
-%2_v 298.359+/-0.00119439
 
 %grafico dettagli per picco temperature
 \begin{figure}[h!]
@@ -154,68 +161,96 @@ Vengono riportate le temperature stimate per ogni campione.
 
 %precednetenetemenete
 \subsection{Analisi delle fasi di compressione e decompressione}
-Un'osservazione generale dei dati ha mostrato che nella parte iniziale del ciclo, corrispondente alla prima parte della fase di decompressione, il volume rimane costante per circa 30 misurazioni. Dato che durante la presa dati la manovella utilizzata per far variare il volume è stata mossa in maniera pressoché costante, ci si aspetta che anche il volume cambi costantemente in dipendenza alla rotazione della manovella. Si è ipotizzato che nella parte iniziale ci siano stati dei giri a vuoto della manovella a causa forse della non rigidità del materiale utilizzato per la tenuta stagna, come già precedentemente affermato.
-Si è proceduto alla reiezione di tali dati.
-Per ciascun campione, ciascuna terna i-esimo di pressione, volume e temperatura è stata sottoposta ad un duplice controllo: se la pressione i-esima risultasse maggiore di 3.921 e invece  il volume maggiore di 22.6 allora la terna è stata considerata nei successivi calcoli e valutazioni, altrimenti è stata scartata poiché facente parte degli intervalli in cui o volume o pressione rimane constante.
+Un'osservazione generale dei dati ha mostrato che nella parte iniziale del ciclo, corrispondente alla prima parte della fase di compressione, il volume rimane costante per circa 30 misurazioni per poi diminuire nel modo atteso. Poiché durante la presa dati la manovella è stata girata in maniera costante, ci si aspetterebbe una variazione di volume anche in questa prima fase. Per interpretare questo fenomeno, si è ipotizzato che nella fase iniziale ci siano stati dei giri a vuoto della manovella o del meccanismo che la muove.
+Si è proceduto pertanto alla reiezione di tali dati eseguita secondo il procedimento qui descritto.
+Analogamente, un fenomeno simile accadeva per la pressione. Al massimo della compressione infatti la pressione rimaneva costante, come già descritto nel paragrafo \ref{par:compress}. Si è pertanto deciso di scartare le terne appartenenti all'intervallo in cui la pressione rimaneva costante in quanto non facenti parte della trasformazione isoterma.
+Per ciascun campione, ciascuna terna i-esima di pressione, volume e temperatura è stata dunque sottoposta ad un duplice controllo su pressione e volume. Talora i valori indicassero una appartenenza della terna al range della trasformazione non definito isotermo, essi venivano scartati. Questa procedura è stata eseguita sia sulle misure di compressione che decompressione.
+
+TABELLA NUMERO MISURE SCARTATE
+%inserire il numero degli indici scartati
+
+
+
 
 %reiezione pressione
 % analisi su scarti cosa rivela? viene più preciso? DA FARE
 
-Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di 1/P e sull'asse delle ordinate il valore del rispettivo volume misurato.Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti:
-\begin{equation*}
-    P\cdot V = n\cdot R\cdot T
-\end{equation*}
-correlata all'assunzione che la trasformazione compiuta durante la presa dati sia isoterma. Sapendo che $n$, il numero di moli del gas considerato,ed $R$, la constante dei gas, rimangono costanti durante il ciclo, si ottiene che $P \cdot V = cost$. La rappresentazione dei dati come prima specificato, risulta dunque  giustificata al fine di testare l'ipotesi che l'aria sia un gas ideale.
-Vengono di seguito riportati i 6 grafici relativi a ciascun campione.
+Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di 1/P e sull'asse delle ordinate il valore del rispettivo volume misurato. Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti:
+\begin{gather*}
+    PV_{tot} = n R T \\
+    V_{tot}= n R T \cdot \frac{1}{P}\\
+    V_{tot}=V_{siringa}+V_{tubicini}=n R T \frac{1}{P}\\
+    V_{siringa}=n R T \frac{1}{P} - V_{tubicini}
+\end{gather*}
+assumendo che la trasformazione compiuta durante la presa dati sia isoterma. La rappresentazione dei dati come prima specificato, risulta dunque giustificata al fine di testare l'ipotesi di una dipendenza lineare della volume V in funzione di 1/P e successivamente che la trasformazione sia reversibile.
+Vengono di seguito riportati i 6 grafici 1/P vs. V relativi a ciascun campione con le interpolazioni distinte per fase della trasformazione e le rette interpolante.
 
-\begin{figure}[h!]
+\begin{figure}
     \centering
-    \includegraphics[width=10cm]{Zero_Clapeyron.pdf}
-    \caption{Temperature primo campione}
-    \label{fig:campionezero_clapeyron}
+    \makebox[\textwidth]{
+    \subfloat[Temperature primo campione]{
+        \includegraphics[width=7cm]{Zero_Clapeyron.pdf}
+        \label{fig:campionezero_clapeyron}
+    }
+    \subfloat[Temperature secondo campione]{
+        \includegraphics[width=7cm]{Uno_Clapeyron.pdf}
+        \label{fig:campioneuno_clapeyron}
+    }}
+    \newline
+    \makebox[\textwidth]{
+    \subfloat[Temperature terzo campione]{
+        \includegraphics[width=7cm]{Due_Clapeyron.pdf}
+        \label{fig:campionedue_clapeyron}
+    }
+    \subfloat[Temperature quarto campione]{
+        \includegraphics[width=7cm]{Tre_Clapeyron.pdf}
+        \label{fig:campionetre_clapeyron}
+    }}
+    \newline
+    \makebox[\textwidth]{
+    \subfloat[Temperature quinto campione]{
+        \includegraphics[width=7cm]{Quattro_Clapeyron.pdf}
+        \label{fig:campionequattro_clapeyron}
+    }
+    \subfloat[Temperature sesto campione]{
+        \includegraphics[width=7cm]{Cinque_Clapeyron.pdf}
+        \label{fig:campionecinque_clapeyron}
+    }}
+    \label{fig:my_label}
 \end{figure}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{Uno_Clapeyron.pdf}
-    \caption{Temperature secondo campione}
-    \label{fig:campioneuno_clapeyron}
-\end{figure}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{Due_Clapeyron.pdf}
-    \caption{Temperature terzo campione}
-    \label{fig:campionedue_clapeyron}
-\end{figure}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{Tre_Clapeyron.pdf}
-    \caption{Temperature quarto campione}
-    \label{fig:campionetre_clapeyron}
-\end{figure}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{Quattro_Clapeyron.pdf}
-    \caption{Temperature quinto campione}
-    \label{fig:campionequattro_clapeyron}
-\end{figure}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{Cinque_Clapeyron.pdf}
-    \caption{Temperature sesto campione}
-    \label{fig:campionecinque_clapeyron}
-\end{figure}
-I grafici generalmente rispettano un andamento concorde con le aspettative teoriche.l fit linare effettuato per le due fasi, i cui parametri vengono ri Il valore del coefficiente angolare corrisponde dunque a $n \cdot R \cdot T$ Al fine di far emergere eventuali """"problemi di non staticità""""" sono stati valutati tramite la compatibilità i coefficiente angolare ottenuti dal fit lineare dei grafici nella fase di compressione e quelli ottenuti durante la fase di decompressione. Per il primo e il terzo campione si è ottenuto un valore di $\lambda$ che mostra una non compatibilità delle due differenti fasi. Per tutti gli altri campioni si ha una compatibiltà ottima.
-L'analisi dell'intercetta riferita a tali dati mostra invece il volume del gas compreso nei tubicini e non considerato al fine dell'esperienza in quanto avrebbe comportato una traslazione dell'asse delle y. 
 
+I grafici generalmente rispettano un andamento concorde con le aspettative teoriche. Il fit lineare effettuato per le due fasi, i cui parametri vengono riportati nei grafici, ha permesso di confrontare le fasi di compressione e decompressione tramite la comparazione dei parametri ottenuti.
+
+Per verificare la reversibilità delle due trasformazioni si è valutata la compatibilità fra i due coefficienti angolari delle rette interpolanti. Le attese teoriche prevedono infatti che il valore del coefficiente angolare ottenuto, corrispondente dunque a $n \cdot R \cdot T$ nelle due fasi sia compatibile. Per valutare la compatibilità si è fatto affidamento sulla seguente 
+
+e calcolando $\lambda$ tra i coefficienti angolari di ogni campione si è riscontrata un valore almeno discreto, ad eccezione del primo ed il quarto campione. Per questi ultimi infatti si è ricavato un valore di $\lambda$ che mostra una non compatibilità delle due differenti fasi. La spiegazione di tale incompatibilità dei coefficienti angolari tra le due differenti fasi è imputabile alle modalità di presa dati. Qualsiasi la causa, l'incompatibilità suggerisce perlomeno che la trasformazione non sia stata del tutto reversibile o quasi statica. Come atteso il coefficiente angolare aumenta in funzione della temperatura, come si può dedurre dall'equazione sopra riportata.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|}
+\begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-N^o campione & 0    & 1   & 2    & 3    & 4    & 5    \\ \hline
-$\lambda_{b_{comp}-b_{decomp}}$ & 7.09 & 0.9 & 0.17 & 8.64 & 1.00 & 0.10 \\ \hline
+\textbf{Campione} & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ \\ \hline
+$\lambda_{b_{comp},b_{decomp}}$ & $7.1$ & $0.9$ & $0.2$ & $8.6$ & $1.0$ & $0.1$ \\ \hline
 \end{tabular}
 \end{table}
+
+Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbe rimanere costante in tutti i campioni considerati, tende ad aumentare con l'aumentare della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia  differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del Dewer. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente, determina una piccola riduzione del volume, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termina di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato e dunque il volume del gas presente all'interno dei tubicini.
+
+
+%chi quadro
+Per quanto riguarda il valore ottenuto effettuando il test del $\chi^2$, si ha che il rapporto $\chi^2/GDL$ è sempre inferiore ad 1, dunque si può affermare che l'ipotesi di linearità viene accettata con un livello di confidenza del 99,5\%.
+In alcuni campioni però 
+
+
+%problema del piccolo saltino del volume a 8.85
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=8cm]{problma_volume.pdf}
+    \caption{Zoom volume}
+    \label{fig:problema_volume}
+\end{figure}
+
+
 
 %analisi compressionene e decompressione, quale funzione dovrebbero seguire
 % ipotesi che è gas ideale?
@@ -237,19 +272,78 @@ $\lambda_{b_{comp}-b_{decomp}}$ & 7.09 & 0.9 & 0.17 & 8.64 & 1.00 & 0.10 \\ \hli
 %   - perchè alcuni dati sono fuori dal fit e non vicini a quello che ci si aspetta-> errore in coeff angolare o temperatura?
 %    - stima moli da fit generale per vedere se sensato e compatibili con stime precedenti
 
-\subsection{Stima del numero di moli dalle terne}
-%stima di numero moli da tutte le triple p v e t e si vede che in questo caso sono minori perchè è solo quello dentro la siringa
+\subsection{Stima delle moli campionarie}
+%stima di numero moli da tutte le triple p v e t e si vede che in questo caso sono minori perché è solo quello dentro la siringa
+Si sono inoltre calcolate le moli considerando al media fra tutti i singoli valori di pressione, volume e temperatura per ciascuna isoterma, ottenendo un campione di valori da cui poi si è stimata la media. Infine da tutte le stime derivate dalle single isoterme si è ricavato il numero di moli riassuntivo con il relativo errore sulla media.
+\begin{gather*}
+    \left \{n_{i, j}=\frac{P_{i, j}V_{i, j}}{T_{i, j}R}\right \}_{i, j} \Rightarrow \overline{n_{i, j}} \hspace{1cm}\forall \text{campione j-esimo}\\
+    \{\overline{n_{i}}\}_{j} \Rightarrow \overline{n}\pm \sigma_{\overline{n}}
+\end{gather*}
+
+
+\begin{wraptable}{r}{5cm}
+    \begin{tabular}{|c|c|}
+        \hline
+        \multirow{2}{*}{\textbf{Campione}} & \textbf{Moli campionarie}\\
+        & $10^{-6}$ [mol] \\ \hline
+        $1$ & $921$ \\ \hline
+        $2$ & $918$ \\ \hline
+        $3$ & $924$ \\ \hline
+        $4$ & $907$ \\ \hline
+        $5$ & $897$ \\ \hline
+        $6$ & $912$ \\ \hline
+        $\overline{n}\pm\sigma_{\overline{n}}$ & $913 \pm 4$ \\ \hline
+    \end{tabular}
+    \caption{Moli Campionarie}
+    \label{tab:moli_campionarie}
+\end{wraptable}
+
+I valori ottenuti sono riportati in Tabella \ref{tab:moli_campionarie} da cui è immediato osservare che essi risultano sempre sottostimati rispetto a quelli calcolati tramite l'interpolazione lineare in quanto la stima campionaria si riferisce solo alle moli contenute nella siringa, quella tramite fit alle moli totali.
+
+Come accennato precedentemente non è possibile escludere una correlazione fra le tre grandezze riferite ad una stessa misurazione, né a misure consecutive nello stesso campione di una singola isoterma. La possibile correlazione può essere ricondotta al metodo di acquisizione dati dei circuiti impiegati. In questa analisi tuttavia, essendo dubbia l'entità e l'importanza di questa correlazione, tutti i dati sono stati considerati scorrelati. Tuttavia, proprio per scongiurare questo rischio, si è optato per stimare $\overline{n}$ tramite una media aritmetica non una media ponderata, associandovi in ogni caso la $\sigma_{\overline{n}}$. L'errore percentuale di $\overline{n}$ risulta essere di $\approx 0.4 \%$, valore piuttosto piccolo, probabilmente sottostimato. 
+
+
+
 
 \subsection{Simulazione di isocora}
-%simulazione di isocora
-%   - come si sono scelti i volumi, ad occhio, così che ce ne fossero per tutti i 5 volumi di compressione e decompressione
-%   - verifica che è lineare come cambia il pressione in conforonto a temperatura
-%   - fit lineare e parametri 
+Partendo dai dati forniti è stata simulata un'isocora: si sono cercati inizialmente un valore di volume in maniera che tale valore fosse presente in tutti i 6 campioni. Si è deciso di trovare 2 volumi al fine di poter confrontare i risultati ottenuti. Questi volumi sono $8.63$ $cm^3$ e $21.01$ $cm^3$.
+A partire dalle terne di dati relative ai volumi analizzati sono stati realizzati i seguenti grafici.
+
+\begin{figure}[h!]
+    \centering
+    \makebox[\textwidth]{
+    \subfloat[Prima isocora]{
+        \includegraphics[width=8.75cm]{Isocora_8-63.pdf}
+        \label{fig:prima_isocora}
+    }
+    \subfloat[Seconda isocora]{
+        \includegraphics[width=8.75cm]{Isocora_21-01.pdf}
+        \label{fig:seconda_isocora}
+    }}
+    \label{fig:isocore}
+\end{figure}
+I parametri del fit sono stati calcolati tramite il metodo del minimo $\chi^2$. Con 4 gradi di libertà, l'ipotesi di un andamento lineare è accettata con un CL del $99.5\%$
 
 \subsection{Valutazione di quasi-staticità e reversibilità}
 %valutazione quasi-staticità di compressioni e decompressioni
 %   - compatibilità coeff angolari per comp decomp per tutte e 3
 %   - verifica quantitativa di differenza fra i 3 campioni-> lento compatte intorno a retta, normale è un pò separato, veloce sono separate
+
+\begin{figure}[h!]
+    \centering
+    \makebox[\textwidth]{
+    \subfloat[Compressione]{
+        \includegraphics[width=7cm]{entrambi_compressione.pdf}
+        \label{fig:compressione}
+    }
+    \subfloat[Decompressione]{
+        \includegraphics[width=7cm]{entrambi_decompressione.pdf}
+        \label{fig:decompressione}
+    }}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
 
 \section{Conclusioni}
 
