@@ -94,23 +94,23 @@ Si sono realizzate alcune prese dati variando di volta in volta la temperatura d
 \end{table}
 
 %Tabella campioni e temperature approssimate, solo per dare un idea tra numero campione e temperatura
-
-
 \section{Analisi e Discussione}
 \subsection{Fasi compressione e decompressione}\label{par:compress}
 %separazione fasi compressione e decompressione
 %   - perchè si separano? che motivi ci sono
 Come operazione preliminare è stato necessario suddividere i dati a seconda della fase di compressione o decompressione a cui essi appartengono. Questa scelta è stata necessaria per verificare successivamente se le due fasi fossero tra loro compatibili, ovvero che queste trasformazioni fossero approssimativamente reversibili e quasi statiche.
-
-Per dividere opportunamente i dati in sottocampioni, da ora in poi chiamati campioni in compressione e decompressione, si sono osservati i grafici dei dati grezzi. Si è osservato che i valori della pressione nella prima fase del ciclo aumentano in funzione del numero della misurazione, per poi assestarsi e rimanere costanti prima dell'inizio della fase di decompressione. Sebbene ci siano delle piccole variazioni di circa $\SI{0.01}{\centi\meter\cubed}$ nel range di misurazioni in cui si osserva un volume costante, si può affermare con certezza che proprio in questa fase cambia il verso di trasformazione, da compressione si inizia a decomprimere il gas. Si è pertanto scelto di considerare il numero della misurazione intermedio del range nel quale la pressione risultava pressoché costante per suddividere i dati grezzi. Tale scelta ha permesso di separare le due fasi anche per le altre grandezze misurate. Per tale considerazione non si sono utilizzate le informazioni date dall'andamento del volume in quanto soggetto a maggiori variazioni nel range in cui invece la pressione rimaneva costante. Si ipotizza che questa variabilità del volume sia dovuta alla presenza di uno stantuffo di gomma nella siringa, utilizzato come guaina a tenuta stagna per prevenire fuoriuscite di gas, che varia il suo volume in quanto costituito da materiale comprimibile, ma non la pressione in quanto non altera significativamente il volume del gas.
+Per dividere opportunamente i dati in sottocampioni, da ora in poi chiamati campioni in compressione e decompressione, si sono osservati i grafici dei dati grezzi. Si è osservato che i valori della pressione nella prima fase del ciclo aumentano in funzione del numero della misurazione, per poi assestarsi e rimanere costanti prima dell'inizio della fase di decompressione. Sebbene ci siano delle piccole variazioni di circa $\SI{0.01}{\centi\meter\cubed}$ nel range di misurazioni in cui si osserva un volume costante, si può affermare con certezza che proprio in questa fase cambia il verso di trasformazione, da compressione si inizia a decomprimere il gas. Si è pertanto scelto di considerare il numero della misurazione intermedio del range nel quale la pressione risultava pressoché costante per suddividere i dati grezzi.
+\begin{wrapfigure}{l}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{Pressione_Volume.pdf}
+  \end{center}
+  \caption{Pressioni e Volumi Primo Campione}
+  \label{fig:campione2}
+\end{wrapfigure}
+Tale scelta ha permesso di separare le due fasi anche per le altre grandezze misurate. Per tale considerazione non si sono utilizzate le informazioni date dall'andamento del volume in quanto soggetto a maggiori variazioni nel range in cui invece la pressione rimaneva costante. Si ipotizza che questa variabilità del volume sia dovuta alla presenza di uno stantuffo di gomma nella siringa, utilizzato come guaina a tenuta stagna per prevenire fuoriuscite di gas, che varia il suo volume in quanto costituito da materiale comprimibile, ma non la pressione in quanto non altera significativamente il volume del gas.
 
 %come capire per tagliare decompress e compress
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{Pressione_Volume.pdf}
-    \caption{Pressioni e Volumi Primo Campione}
-    \label{fig:campione2}
-\end{figure}
+
 
 
 
@@ -166,16 +166,29 @@ Si è proceduto pertanto alla reiezione di tali dati eseguita secondo il procedi
 Analogamente, un fenomeno simile accadeva per la pressione. Al massimo della compressione infatti la pressione rimaneva costante, come già descritto nel paragrafo \ref{par:compress}. Si è pertanto deciso di scartare le terne appartenenti all'intervallo in cui la pressione rimaneva costante in quanto non facenti parte della trasformazione isoterma.
 Per ciascun campione, ciascuna terna i-esima di pressione, volume e temperatura è stata dunque sottoposta ad un duplice controllo su pressione e volume. Talora i valori indicassero una appartenenza della terna al range della trasformazione non definito isotermo, essi venivano scartati. Questa procedura è stata eseguita sia sulle misure di compressione che decompressione.
 
-TABELLA NUMERO MISURE SCARTATE
 %inserire il numero degli indici scartati
-
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Campione} & \textbf{Compressione} & \textbf{Decompressione} \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $33-737$ & $836-1570$ \\ \hline
+        $2$ & $78-696$ & $800-1576$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $45-677$ & $743-1167$ \\ \hline
+        $4$ & $18-712$ & $783-1325$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $39-712$ & $813-1335$ \\ \hline
+        $6$ & $49-700$ & $702-1287$ \\ \hline
+    \end{tabular}
+    \caption{Intervalli considerati}
+    \label{tab:misure_scartate}
+\end{table}
 
 
 
 %reiezione pressione
 % analisi su scarti cosa rivela? viene più preciso? DA FARE
 
-Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di 1/P e sull'asse delle ordinate il valore del rispettivo volume misurato. Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti:
+Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di $1/P$ e sull'asse delle ordinate il valore del rispettivo volume misurato. Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti:
 \begin{gather*}
     PV_{tot} = n R T \\
     V_{tot}= n R T \cdot \frac{1}{P}\\
@@ -229,27 +242,28 @@ e calcolando $\lambda$ tra i coefficienti angolari di ogni campione si è riscon
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textbf{Campione} & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ \\ \hline
-$\lambda_{b_{comp},b_{decomp}}$ & $7.1$ & $0.9$ & $0.2$ & $8.6$ & $1.0$ & $0.1$ \\ \hline
+\textbf{Campione} & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ \\ \hline
+\rowcolor[rgb]{0.85,0.85,0.85}$\lambda_{b_{comp},b_{decomp}}$ & $7.1$ & $0.9$ & $0.2$ & $8.6$ & $1.0$ & $0.1$ \\ \hline
 \end{tabular}
 \end{table}
 
-Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbe rimanere costante in tutti i campioni considerati, tende ad aumentare con l'aumentare della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia  differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del Dewer. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente, determina una piccola riduzione del volume, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termina di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato e dunque il volume del gas presente all'interno dei tubicini.
+Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbe rimanere costante in tutti i campioni considerati, tende ad aumentare con l'aumentare della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia  differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del Dewer. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente, determina una piccola riduzione del volume, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termina di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato e dunque il volume del gas presente all'interno dei tubicini.A causa di tali problemi riscontrati per il valore delle intercette calcolate, non si riesce a dare una stima del volume del gas presente all'interno dei tubicini.
 
 
 %chi quadro
 Per quanto riguarda il valore ottenuto effettuando il test del $\chi^2$, si ha che il rapporto $\chi^2/GDL$ è sempre inferiore ad 1, dunque si può affermare che l'ipotesi di linearità viene accettata con un livello di confidenza del 99,5\%.
-In alcuni campioni però 
 
-
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{problma_volume.pdf}
+  \end{center}
+  \caption{Zoom volume}
+  \label{fig:problema_volume}
+\end{wrapfigure}
 %problema del piccolo saltino del volume a 8.85
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=8cm]{problma_volume.pdf}
-    \caption{Zoom volume}
-    \label{fig:problema_volume}
-\end{figure}
-
+L'andamento generale dei dati mostra una imperfezione costante riscontrata nei grafici sopra riportati.
+Si osserva infatti che quando la misurazione del volume rientra nel range per le misurazioni maggiori di $\SI{8,61}{\centi\meter}$ e minori di $\SI{9,07}{\centi\meter}$ si ha una leggera variazione rispetto all'andamento generalmente lineare dei punti, come mostrato nel grafico \ref{fig:problema_volume}. Si ipotizza che il problema sia legato alla formazione di attriti presenti all'interno della siringa, creati durante lo scorrimento dello stantuffo all'interno della stessa nel tratto corrispondente al range sopra definito. Ciò vale sia per la fase di compressione che per la fase di decompressione.\\
+Non si è proceduti alla reiezione di questi dati in quanto la variazione di questi ultimi discosta di poco dall'andamento descritto dalle rette interpolanti.
 
 
 %analisi compressionene e decompressione, quale funzione dovrebbero seguire
@@ -265,6 +279,10 @@ In alcuni campioni però
 %   - si osserva che aumentando il campione aumenta il coeff angolare, banana deve essere così perchè dipende direttamente dalla temperatura
 %    - stima di numero di moli per ciascun fit in compressione e decompressione
 
+\subsection{Stima dello zero assoluto}
+Con 
+
+%parlare del t di student sulle medie
 
 %analisi di tutti i coeff angolari in compressione e decompressione su stesso grafico in funzione di temperatura stimata
 %   - tutta la algebretta del cazzo che mostra come trovare lo zero assoluto
@@ -286,13 +304,13 @@ Si sono inoltre calcolate le moli considerando al media fra tutti i singoli valo
         \hline
         \multirow{2}{*}{\textbf{Campione}} & \textbf{Moli campionarie}\\
         & $10^{-6}$ [mol] \\ \hline
-        $1$ & $921$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $921$ \\ \hline
         $2$ & $918$ \\ \hline
-        $3$ & $924$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $924$ \\ \hline
         $4$ & $907$ \\ \hline
-        $5$ & $897$ \\ \hline
-        $6$ & $912$ \\ \hline
-        $\overline{n}\pm\sigma_{\overline{n}}$ & $913 \pm 4$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $897$ \\ \hline
+        $6$ & $912$ \\ \hline\hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$\overline{n}\pm\sigma_{\overline{n}}$ & $913 \pm 4$ \\ \hline
     \end{tabular}
     \caption{Moli Campionarie}
     \label{tab:moli_campionarie}
@@ -306,9 +324,8 @@ Come accennato precedentemente non è possibile escludere una correlazione fra l
 
 
 \subsection{Simulazione di isocora}
-Partendo dai dati forniti è stata simulata un'isocora: si sono cercati inizialmente un valore di volume in maniera che tale valore fosse presente in tutti i 6 campioni. Si è deciso di trovare 2 volumi al fine di poter confrontare i risultati ottenuti. Questi volumi sono $8.63$ $cm^3$ e $21.01$ $cm^3$.
-A partire dalle terne di dati relative ai volumi analizzati sono stati realizzati i seguenti grafici.
-
+Partendo dai dati forniti è stata simulata un'isocora: si sono cercati inizialmente un valore di volume in maniera che tale valore fosse presente in tutti i 6 campioni. Si è deciso di cercare almeno 2 volumi diversi al fine di poter confrontare i risultati ottenuti. Questi volumi sono $\SI{8.63}{\centi\meter\cubed}$ e $\SI{21.01}{\centi\meter\cubed}$. Solo nel primo caso inoltre è stato possibile ottenere i volumi dalla stessa fase della trasformazione, nello specifico nella fase in compressione. Nel secondo caso infatti, i dati sono derivati sia dalla fase di compressione che di decompressione.
+Sono stati realizzati i seguenti grafici a partire dalle terne di dati relative a tali volumi.
 \begin{figure}[h!]
     \centering
     \makebox[\textwidth]{
@@ -322,7 +339,34 @@ A partire dalle terne di dati relative ai volumi analizzati sono stati realizzat
     }}
     \label{fig:isocore}
 \end{figure}
-I parametri del fit sono stati calcolati tramite il metodo del minimo $\chi^2$. Con 4 gradi di libertà, l'ipotesi di un andamento lineare è accettata con un CL del $99.5\%$
+Si è poi eseguito un fit lineare tramite il metodo del minimo $\chi^2$ ed i parametri del fit calcolati vengono riportati direttamente nel Grafico \ref{fig:prima_isocora} e \ref{fig:seconda_isocora}. In Tabella \ref{tab:PARAMETRI FIT} si riportano infine i quantificatori di bontà del fit ottenuto.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+         & $\chi^2$ & $\rho$ & $t_{student}$ \\ \hline
+        Prima isocora & \rowcolor[rgb]{0.85,0.85,0.85}$3.63685$ & $0.99625$ & $23.0364$ \\ \hline
+        Seconda isocora & $1.85202$ & $0.993837$ & $17.9304$ \\ \hline
+    \end{tabular}
+    \caption{Quantificatori su interpolazioni di isocore}
+    \label{tab:my_label}
+\end{table}
+
+
+Con 4 gradi di libertà, l'ipotesi di un andamento lineare non è rigettata con un CL del $99.5\%$, sia considerando il test sul $\chi^{2}$ si il test di Student sul coefficiente di correlazione lineare, pertanto è possibile  affermare che sussiste un legame di diretta proporzionalità fra temperatura e pressione.
+La legge che lega queste due grandezze è
+\begin{equation*}
+    P=\frac{nR}{V}\cdot T
+\end{equation*}
+da cui, tramite il confronto con i coefficienti del fit, è possibile ricavare la stima del numero di moli per ciascuna isocora. Il valore dell'intercetta, non previsto dal modello teorico, compare nei parametri del fit ed è attribuibile a possibili fluttuazioni statistiche. In entrambi i casi tale valore non è compatibile con lo zero, come previsto dal modello teorico.
+Si riportano le stime delle moli ottenute in Tabella \ref{tab:MOLI FIT ISOCORE} con le relative propagazioni. È immediato verificare che in particolare per la prima isocora riferita agli $\SI{8.61}{\centi\meter\cubed}$ si ottiene un valor molto differente da quello atteso. Ciò suggerisce, che sebbene il comportamento del gas sia in ottima approssimazione ideale, non è possibile stimare con accuratezza il numero di moli contenute. Una possibile causa d'errore è dovuta al non aver preso in considerazione anche il volume dei tubicini. L'equazione di stato del gas infatti, per la corretta stima del numero di moli totali prevede l'impiego del volume totale. Il volume a disposizione dai dati infatti è solo la stima di quello presente all'interno della siringa.
+
+%tabella stime moli in isocore
+8.6cc 0.000555837+/-2.61115e-05
+21cc  0.0013532+/-6.17727e-05
+
+A seguito di queste considerazioni, questa stima risolta molto approssimativa e soggetta ad errori. Risulta pertanto preferibile sfruttare altri metodi, alcuni dei quali trattati precedentemente.
 
 \subsection{Valutazione di quasi-staticità e reversibilità}
 %valutazione quasi-staticità di compressioni e decompressioni
@@ -333,11 +377,13 @@ I parametri del fit sono stati calcolati tramite il metodo del minimo $\chi^2$. 
     \centering
     \makebox[\textwidth]{
     \subfloat[Compressione]{
-        \includegraphics[width=7cm]{entrambi_compressione.pdf}
+        \includegraphics[width=7cm]{paraboloide_Compressioni.pdf}
         \label{fig:compressione}
     }
     \subfloat[Decompressione]{
-        \includegraphics[width=7cm]{entrambi_decompressione.pdf}
+        \includegraphics[width=7cm]{paraboloide_DECompressioni.pdf}
+        
+    
         \label{fig:decompressione}
     }}
     \caption{Caption}
