@@ -172,7 +172,7 @@ vector<double> reciproco(vector<double> &dati_pressione)
     vector<double> temp_vec;
     for (auto d : dati_pressione)
     {
-        temp_vec.push_back(1 / d);
+        temp_vec.push_back(1. / d);
     }
     return temp_vec;
 }
@@ -184,7 +184,7 @@ vector<info> get_interpolazioni(vector<raw_data> &dati)
     for (int i = 0; i < dati.size(); i++)
     {
         info temp_info;
-        temp_info.b_ang = b_angolare_err_uguali(reciproco(dati[i].pressure), dati[i].volume);
+        temp_info.b_ang = b_angolare(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
         temp_info.err_b_ang = sigma_b(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
         temp_info.a_intercetta = a_intercetta_err_uguali(reciproco(dati[i].pressure), dati[i].volume);
         temp_info.err_a_intercetta = sigma_a(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
@@ -202,7 +202,7 @@ vector<info> join_info(vector<info> &interpolazioni, vector<info> &temperature)
     for (int i = 0; i < interpolazioni.size(); i++)
     {
         info temp_joining;
-        temp_joining.temp_media = temperature[i].temp_media;
+        temp_joining.temp_media = temperature[i].temp_media - 273.15;
         temp_joining.err_temp_media = temperature[i].err_temp_media;
         temp_joining.a_intercetta = interpolazioni[i].a_intercetta;
         temp_joining.err_a_intercetta = interpolazioni[i].err_a_intercetta;
@@ -238,6 +238,7 @@ info interpolazione_moli(vector<info> &joined)
     temp_infoz.testchi = test_chi(x, y, err_y);
     temp_infoz.testpearson = pearson(x, y);
     temp_infoz.sigma_b_post = sigma_b_posteriori(x,y);
+    temp_infoz.sigma_a_post = sigma_a_posteriori(x,y);
     return temp_infoz;
 }
 

@@ -24,6 +24,7 @@ struct info
     double err_b_ang;
     double sigma_b_post;
     double a_intercetta;
+    double sigma_a_post;
     double err_a_intercetta;
     double sigma_y_post;
     double testchi;
