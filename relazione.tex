@@ -21,7 +21,7 @@
 \usepackage{multicol}
 \usepackage{rccol}
 \usepackage{amssymb}
-
+\usepackage{enumitem}
 
 
 \usepackage{hyperref}
@@ -53,7 +53,7 @@
 
 
 \section{Obiettivo esperienza}
-L'obiettivo dell'esperienza è la caratterizzazione
+L'obiettivo dell'esperienza è verifica dell'equazione di stato dei gas.
 
 \section{Apparato Sperimentale}
 \begin{figure}[h!]
@@ -65,6 +65,7 @@ L'obiettivo dell'esperienza è la caratterizzazione
 
 L'apparato sperimentale è composto dai seguenti elementi: 
 \begin{enumerate}[label=\textbf{\alph*.}]
+    \itemsep=1pt
     \item Sensori/ strumentazione di acquisizione dati
     \item Valvola a \textbf{T}
     \item Sensore di temperatura
@@ -77,8 +78,10 @@ L'apparato sperimentale è composto dai seguenti elementi:
     \item Pareti adiabatiche isolanti
 \end{enumerate}
 
+
+\newpage
 \section{Presa dati}
-Impiegando la strumentazione fornita, si sono realizzate alcune prese dati variando di volta in volta la temperatura dell'acqua nella quale il sistema era immerso, cercando di limitando il più possibile ogni dispersione termica, tramite l'impiego del vaso Dewar. Con il contenitore inizialmente a temperatura prossima agli $\SI{0}{\degree}$ centigradi, per via del ghiaccio presente al suo interno, si è effettuata una prima presa dati. Successivamente si è aumentata la temperatura del bagno termico, misurata dal sensore, tramite la resistenza immersa di $\approx\SI{10}{\celsius}$. Assestatasi la temperatura al valore prefissato si è rieseguita la presa dati. Tale processo si è ripetuto per tutte le temperature riportate in Tabella \ref{tab:camp_temp}. Si specifica che la presa dati si è svolta muovendo opportunamente una manovella in modo da controllare la compressione e la decompressione della siringa, mescolando occasionalmente il liquido all'interno del Dewer tramite l'agitatore. Il sistema infatti rileva la posizione dello stantuffo il cui moto dipende dalla posizione della manovella, stimando quindi il volume del gas occupato nella siringa. Si noti che i due campioni finali realizzati nel momento in cui la temperatura era ancora a $\SI{25}{\celsius}$ gradi si differenziano per modalità di presa dati, rispettivamente con una variazione più lenta e con una variazione più veloce rispetto a quelle mediamente usate per tutti gli altri campioni.
+Impiegando la strumentazione fornita, si sono realizzate le prese dati variando di volta in volta la temperatura dell'acqua nella quale il sistema era immerso, cercando di limitare il più possibile ogni dispersione termica, tramite l'impiego del vaso Dewar. Con il contenitore inizialmente a temperatura prossima ai $\SI{5}{\celsius}$, per via del ghiaccio presente al suo interno, si è effettuata una prima presa dati. Successivamente si è aumentata la temperatura del bagno termico, misurata dal sensore, tramite la resistenza immersa di $\Delta T \approx\SI{10}{\celsius}$. Assestatasi la temperatura al valore prefissato si è rieseguita la presa dati. Tale processo si è ripetuto per tutte le temperature riportate in Tabella \ref{tab:camp_temp}. Si specifica che la presa dati si è svolta muovendo opportunamente una manovella in modo da controllare la compressione e la decompressione della siringa, mescolando occasionalmente il liquido all'interno del Dewar tramite l'agitatore. Il sistema infatti rileva la posizione dello stantuffo il cui moto dipende dalla posizione della manovella, stimando quindi indirettamente il volume del gas occupato all'interno della siringa. Si noti che i due campioni finali realizzati nel momento in cui la temperatura era ancora a $\SI{25}{\celsius}$ si differenziano per modalità di presa dati, rispettivamente con una variazione più lenta e con una variazione più veloce rispetto a quelle mediamente usate per tutti gli altri campioni.
 
 %Tabella campioni e temperature approssimate, solo per dare un idea tra numero campione e temperatura
 \begin{table}[h!]
@@ -88,20 +91,20 @@ Impiegando la strumentazione fornita, si sono realizzate alcune prese dati varia
         Campione & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $3_{lenta}$ & $3_{veloce}$\\\hline
         \rowcolor[rgb]{0.85,0.85,0.85} T [$\si{\celsius}$] & $\approx5$ & $\approx15$ & $\approx25$ & $\approx35$ & $\approx45$ & $\approx55$ & $\approx25$ & $\approx25$ \\\hline
     \end{tabular}
-    \caption{Temperature dei campioni}
+    \caption{Temperature nominali impostate  dei campioni}
     \label{tab:camp_temp}
 \end{table}
 
-Tutti i dati acquisiti ad intervalli di tempo regolari sono stati forniti dalla strumentazione elettronica dell'apparato. Per ogni misurazione effettuata si sono registrati i valori di pressione, temperatura e volume. Quest'ultimo è stato calcolato dal software a partire dalla posizione dello stantuffo della siringa, poi moltiplicata per la sezione della stessa ma non considerando nel computo il volume di gas contenuto nei tubicini, in quanto superfluo ai fini dell'esperienza. Nonostante ciascun sensore, rispetto agli altri, sia indipendente nell'acquisizione, è comunque possibile che si crei una correlazione nel momento dell'acquisizione del segnale elettrico a seconda di come i circuiti sono tra loro collegati.\newline
+Tutti i dati acquisiti ad intervalli di tempo regolari sono stati forniti dalla strumentazione elettronica dell'apparato. Per ogni misurazione effettuata si sono registrati i valori di pressione, temperatura e volume. Quest'ultimo è stato calcolato dal software a partire dalla posizione dello stantuffo della siringa, poi moltiplicata per la sezione della stessa ma non considerando nel computo il volume di gas contenuto nei tubicini, in quanto superfluo ai fini dell'esperienza. Nonostante ciascun sensore, rispetto agli altri, sia indipendente nell'acquisizione, è comunque possibile che si crei una correlazione statistica nel momento dell'acquisizione del segnale elettrico a seconda di come i circuiti sono tra loro collegati.
 
 
 \section{Analisi e Discussione}
 \subsection{Fasi compressione e decompressione}\label{par:compress}
 %separazione fasi compressione e decompressione
 %   - perchè si separano? che motivi ci sono
-Come operazione preliminare è stato necessario suddividere i dati a seconda della lor appartenenza alla fase di compressione o decompressione. Questa distinzione è stata necessaria per verificare successivamente se le due fasi fossero tra loro compatibili, ovvero che le trasformazioni in esame fossero approssimativamente reversibili e quasi statiche.
+Come operazione preliminare è stato necessario suddividere i dati a seconda della loro appartenenza alla fase di compressione o decompressione. Questa distinzione è stata necessaria per verificare successivamente se le due fasi fossero tra loro compatibili, ovvero che le trasformazioni in esame fossero approssimativamente reversibili e quasi statiche.
 
-Per dividere opportunamente i dati in sottocampioni, d'ora in poi chiamati campioni in compressione e decompressione, si sono osservati i grafici dei dati grezzi. Si è osservato che i valori della pressione nella prima fase del ciclo aumentano in funzione del numero della misurazione, per poi assestarsi e rimanere costanti prima dell'inizio della fase di decompressione. Sebbene ci siano delle piccole variazioni di circa $\SI{0.01}{\centi\meter\cubed}$, valore pari all'incertezza del sensore della pressione,  nel range di misurazioni in cui si osserva un volume pressoché costante, si può affermare con certezza che proprio in questa fase cambia il verso della trasformazione: da compressione si inizia a decomprimere il gas (Figura \ref{fig:campione2}). Si è pertanto scelto di considerare il numero della misurazione intermedio del range nel quale la pressione risulta pressoché costante per suddividere i dati grezzi.
+Per dividere opportunamente i dati in sottocampioni, d'ora in poi chiamati campioni in compressione e decompressione, si sono valutati i grafici dei dati grezzi. Si è osservato che i valori della pressione nella prima fase del ciclo aumentano in funzione del numero della misurazione, per poi assestarsi e rimanere costanti prima dell'inizio della fase di decompressione. Sebbene ci siano delle piccole variazioni di circa $\SI{0.01}{\centi\meter\cubed}$, valore pari all'incertezza del sensore della pressione,  nel range di misurazioni in cui si osserva un volume pressoché costante, si può affermare con certezza che proprio in questa fase cambia il verso della trasformazione: da compressione si inizia a decomprimere il gas (Figura \ref{fig:campione2}). Si è pertanto scelto di considerare il numero della misurazione intermedio del range nel quale la pressione risulta pressoché costante per suddividere i dati grezzi.
 \begin{wrapfigure}{l}{0.5\textwidth}
   \begin{center}
     \includegraphics[width=0.48\textwidth]{Pressione_Volume.pdf}
@@ -126,19 +129,26 @@ Tale protocollo di suddivisione ha permesso di separare le due fasi anche per le
 %   - media è quella più appropiata
 Una prima analisi dei dati relativi alle temperature mostrano talvolta una sua leggera variazione durante entrambe le fasi della trasformazione. Si osserva infatti una dispersione massima delle temperature di $\approx \SI{1.4}{\kelvin}$, soprattutto nei campioni 2, 3, 5 e 6. 
 
-Si riporta, a titolo di esempio per tutti i campioni in cui si verifica questo fenomeno di variazione iniziale della temperatura, il Grafico \ref{fig:campione_temperatura}. Si può osservare una sorta di picco nelle prime misurazioni della temperatura, in cui essa non rimane costante, bensì dapprima diminuisce, per poi aumentare assestandosi infine al valore asintotico. La variazione è di poco meno di $\SI{2}{\kelvin}$, poco significativa se messa in confronto con il valore a cui tende. %intendo err percentuale piccolo
+Si riporta, a titolo di esempio per tutti i campioni in cui si verifica questo fenomeno di variazione iniziale della temperatura, il Grafico \ref{fig:campione_temperatura}. Si può osservare infatti un picco nelle prime misurazioni della temperatura, in cui essa non rimane costante, bensì dapprima diminuisce, per poi aumentare drasticamente assestandosi nella parte finale. La variazione è di poco inferiore di $\SI{2}{\kelvin}$.
 Si ipotizza che queste variazioni, che si verificano anche per altri campioni e soltanto nelle prime misurazioni siano attribuibili ad un rimescolamento del liquido da parte dell'operatore. È ragionevole che il liquido presenti differenze di temperatura dell'ordine $1-2$ Kelvin proprio per come è costruito il sistema e che il rimescolamento del liquido porti ad una variazione della temperatura misurata dalla termocoppia. 
-Si è deciso comunque di stimare la temperatura dell'isoterma come media aritmetica delle temperature misurate per tutti i campioni, avendo cura però di non considerare i valori precedenti ad una certa soglia arbitrariamente fissata per i campioni che presentano un picco. Ad esempio, nel secondo campione la media è stata calcolata a partire dalla 300esima misura. Il valore arbitrario è infatti stato scelto in modo tale da escludere nella media eventuali picchi.  Gli errori assegnati alle stime delle temperature sono derivati dalla deviazione standard sulla media, motivo per cui gli errori percentuali sono di molto inferiori a 1\%.
+Si è deciso comunque di stimare la temperatura dell'isoterma come media aritmetica delle temperature misurate per tutti i campioni, avendo cura però di non considerare i valori precedenti ad una certa soglia arbitrariamente fissata per i campioni che presentano un picco. Ad esempio, nel secondo campione la media è stata calcolata a partire dalla 300esima misura. Il valore arbitrario è infatti stato scelto in modo tale da escludere nella media gli eventuali picchi.  Gli errori assegnati alle stime delle temperature sono derivati dalla deviazione standard sulla media, motivo per cui gli errori percentuali sono di molto inferiori a 1\% vista la dimensione ragguardevole del campione.\newline
 
-Specificatamente per il secondo campione, si nota la presenza di alcuni punti attorno alla 800esima misurazione che si discostano fortemente dalle temperature circostanti. Ciò è probabilmente imputabile ad un errore di lettura del sensore. Nonostante ciò si è deciso di non scartare tali valori.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{temperatura_secondo.pdf}
+    \caption{Temperature secondo campione}
+    \label{fig:campione_temperatura}
+\end{figure}
 
-Altra osservazione derivata da un'attenta analisi dei grafici, è che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur il contenitore sia isolante, vi sono comunque dispersioni di calore dovute alle pareti non perfettamente adiabatiche, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione che vengono riportate nella Tabella \ref{tab:temp_unica}.
+Specificatamente per il secondo campione, si nota la presenza di alcuni punti attorno alla 800esima misurazione che si discostano fortemente dalle temperature circostanti. Ciò è probabilmente imputabile ad un errore di lettura del sensore. Si sono scartati tali valori,anche se di poco influenti per il calcolo di $\overline{T}$, data la dimensione del campione.\\
+
+Altra osservazione derivata da un'attenta analisi dei grafici, è che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur il contenitore sia isolante, vi sono infatti comunque dispersioni di calore dovute alle pareti non perfettamente adiabatiche, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione che vengono riportate nella Tabella \ref{tab:temp_unica}.
 
 \begin{table}[h!]
     \centering
     \begin{tabular}{|c|c|}
         \hline
-        \textbf{Campione} & \textbf{T} [$\si{\kelvin}$] \\ \hline
+        Campione & $\overline{T}\pm\sigma_{\overline{T}}$ [$\si{\kelvin}$] \\ \hline
         \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $279.0630\pm0.0009$ \\ \hline
         $2$ & $288.7700\pm0.0005$ \\ \hline
         \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $298.1470\pm0.0005$ \\ \hline
@@ -153,19 +163,13 @@ Altra osservazione derivata da un'attenta analisi dei grafici, è che se la temp
     \label{tab:temp_unica}
 \end{table}
 
+L'errore associato alla temperatura varia a seconda del numero di misurazioni all'interno del campione i-esimo considerato. %grafico dettagli per picco temperature
 
-%grafico dettagli per picco temperature
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{temperatura_secondo.pdf}
-    \caption{Temperature secondo campione}
-    \label{fig:campione_temperatura}
-\end{figure}
 
 %precednetenetemenete
 \subsection{Analisi delle fasi di compressione e decompressione}
-Un'osservazione generale dei dati ha mostrato che nella parte iniziale del ciclo, corrispondente alla prima parte della fase di compressione, il volume rimane costante per circa 30 misurazioni per poi diminuire nel modo atteso. Poiché durante la presa dati la manovella è stata girata in maniera costante, ci si aspetta una variazione di volume anche in questa prima fase. Per interpretare questo fenomeno, si è ipotizzato che nella fase iniziale ci siano stati dei giri a vuoto della manovella o del meccanismo che la muove, in modo analogo a quanto accade alla fine della decompressione, ovvero quando la manovella viene a ritrovarsi nella stessa posizione.
-Analogamente, un fenomeno simile accade per la pressione. Al massimo della compressione infatti la pressione rimane costante, come già descritto nel paragrafo \ref{par:compress}. Si è pertanto deciso di scartare le terne appartenenti all'intervallo in cui la pressione rimane costante in quanto non facenti parte della trasformazione isoterma.
+Un'osservazione generale dei dati ha mostrato che nella parte iniziale del ciclo, corrispondente alla prima parte della fase di compressione, il volume rimane costante per circa 30 misurazioni per poi diminuire nel modo atteso. Poiché durante la presa dati la manovella è stata girata in maniera costante, ci si aspetta una variazione di volume anche in questa prima fase. Per interpretare questo fenomeno, si è ipotizzato che nella fase iniziale ci siano stati dei giri a vuoto della manovella o del meccanismo che la muove, in modo analogo a quanto accade alla fine della decompressione, ovvero quando la manovella viene a ritrovarsi nella posizione iniziale.
+Analogamente, un fenomeno simile accade per la pressione. Al massimo della compressione infatti la pressione rimane costante, come già descritto nel paragrafo \ref{par:compress}. Si è pertanto deciso di scartare le terne appartenenti all'intervallo in cui la pressione rimane costante in quanto non valutabile come cambiamento appartenenti ad una qualsiasi trasformazione isoterma.
 Per ciascun campione, ciascuna terna i-esima di pressione, volume e temperatura è stata dunque sottoposta ad un duplice controllo su pressione e volume. Talora i valori indichino una appartenenza della terna al range della trasformazione non definito isotermo, essi vengono scartati. Questa procedura è stata eseguita sia sulle misure di compressione che decompressione. Vengono riportati in Tabella \ref{tab:misure_scartate} gli indici delle terne considerate come appratenti ad una trasformazione isoterma. 
  
 %inserire il numero degli indici scartati
@@ -181,7 +185,7 @@ Per ciascun campione, ciascuna terna i-esima di pressione, volume e temperatura 
         \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $39-712$ & $813-1335$ \\ \hline
         $6$ & $49-700$ & $702-1287$ \\ \hline
     \end{tabular}
-    \caption{Intervalli considerati}
+    \caption{Intervalli considerati per l'analisi dati}
     \label{tab:misure_scartate}
 \end{table}
 
@@ -190,53 +194,53 @@ Per ciascun campione, ciascuna terna i-esima di pressione, volume e temperatura 
 %reiezione pressione
 % analisi su scarti cosa rivela? viene più preciso? DA FARE
 
-Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di $1/P$ e sull'asse delle ordinate il valore del rispettivo volume misurato. Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti:
+Si è proceduto alla rappresentazione grafica delle grandezze pressione e volume adeguatamente separate per la fase di compressione e decompressione. Nello specifico sono stati realizzati i grafici utilizzando sull'ascissa il valore di $1/P$ e sull'asse delle ordinate il valore del rispettivo volume misurato. Tale scelta è stata determinata dalla considerazione dell'equazione di stato dei gas perfetti assumendo che la trasformazione compiuta durante la presa dati sia isoterma:
 \begin{gather*}
     PV_{tot} = n R T \\
     V_{tot}= n R T \cdot \frac{1}{P}\\
     V_{tot}=V_{siringa}+V_{tubicini}=n R T \frac{1}{P}\\
     V_{siringa}=n R T \frac{1}{P} - V_{tubicini}
 \end{gather*}
-assumendo che la trasformazione compiuta durante la presa dati sia isoterma. La rappresentazione dei dati come prima specificato, risulta dunque giustificata al fine di testare l'ipotesi di una dipendenza lineare della volume V in funzione di 1/P e successivamente che la trasformazione sia reversibile.
-Vengono di seguito riportati i 6 grafici 1/P vs. V relativi a ciascun campione con le interpolazioni distinte per fase della trasformazione e le rette interpolante.
+La rappresentazione dei dati come prima specificato, risulta dunque giustificata al fine di testare l'ipotesi di una dipendenza lineare della volume V in funzione di 1/P e successivamente di verificare  che la trasformazione sia reversibile.
+Vengono di seguito riportati i 6 grafici 1/P vs. V relativi a ciascun campione con le interpolazioni distinte per fase della trasformazione e le rette interpolanti.
 
 \begin{figure}
     \centering
     \makebox[\textwidth]{
     \subfloat[Primo campione]{
-        \includegraphics[width=7cm]{Zero_Clapeyron.pdf}
+        \includegraphics[width=8.5cm]{Zero_Clapeyron.pdf}
         \label{fig:campionezero_clapeyron}
     }
     \subfloat[Secondo campione]{
-        \includegraphics[width=7cm]{Uno_Clapeyron.pdf}
+        \includegraphics[width=8.5cm]{Uno_Clapeyron.pdf}
         \label{fig:campioneuno_clapeyron}
     }}
     \newline
     \makebox[\textwidth]{
     \subfloat[Terzo campione]{
-        \includegraphics[width=7cm]{Due_Clapeyron.pdf}
+        \includegraphics[width=8.5cm]{Due_Clapeyron.pdf}
         \label{fig:campionedue_clapeyron}
     }
     \subfloat[Quarto campione]{
-        \includegraphics[width=7cm]{Tre_Clapeyron.pdf}
+        \includegraphics[width=8.5cm]{Tre_Clapeyron.pdf}
         \label{fig:campionetre_clapeyron}
     }}
     \newline
     \makebox[\textwidth]{
     \subfloat[Quinto campione]{
-        \includegraphics[width=7cm]{Quattro_Clapeyron.pdf}
+        \includegraphics[width=8.5cm]{Quattro_Clapeyron.pdf}
         \label{fig:campionequattro_clapeyron}
     }
     \subfloat[Sesto campione]{
-        \includegraphics[width=7cm]{Cinque_Clapeyron.pdf}
+        \includegraphics[width=8.5cm]{Cinque_Clapeyron.pdf}
         \label{fig:campionecinque_clapeyron}
     }}
     \label{fig:my_label}
 \end{figure}
 
-I grafici generalmente rispettano un andamento concorde con le aspettative teoriche. Il fit lineare effettuato per le due fasi, i cui parametri vengono riportati nei grafici, ha permesso di confrontare le fasi di compressione e decompressione tramite la comparazione dei parametri ottenuti.
+I grafici generalmente rispettano un andamento concorde con le aspettative teoriche, infatti ci si aspetta che $P\cdot V = cost$. Il fit lineare effettuato per le due fasi, i cui parametri vengono riportati nei grafici, ha permesso di confrontare le fasi di compressione e decompressione tramite la comparazione dei parametri ottenuti.
 
-Per verificare la reversibilità delle due trasformazioni si è valutata la compatibilità fra i due coefficienti angolari delle rette interpolanti. Le attese teoriche prevedono infatti che il valore del coefficiente angolare ottenuto, corrispondente dunque a $n R T$ nelle due fasi sia compatibile. Per valutare la compatibilità e la sua bontà si è fatto affidamento sui seguenti range:
+Per verificare la reversibilità delle due trasformazioni si è valutata la compatibilità fra i due coefficienti angolari delle rette interpolanti. Le attese teoriche prevedono infatti che il valore del coefficiente angolare ottenuto, corrispondente dunque a $n R T$ nelle due fasi sia compatibile. Per valutare la compatibilità e la sua bontà si è fatto affidamento ai seguenti indicatori:
 \begin{equation*}%Comp
     \label{eq:cases}
     \begin{cases}
@@ -246,7 +250,7 @@ Per verificare la reversibilità delle due trasformazioni si è valutata la comp
     3<\lambda, & \text{Non compatibile}\\
     \end{cases}
 \end{equation*}
-Calcolando $\lambda$ tra i coefficienti angolari di ogni campione si è riscontrato una compatibilità discreta, ad eccezione del primo ed il quarto campione. Per questi ultimi infatti si è ricavato un valore di $\lambda$ che mostra una non compatibilità delle due differenti fasi. La spiegazione di tale incompatibilità dei coefficienti angolari  è imputabile alle modalità di presa dati. Qualsiasi sia la causa, l'incompatibilità suggerisce perlomeno che la trasformazione non sia stata del tutto reversibile o quasi statica. 
+Calcolando $\lambda$ tra i coefficienti angolari di ogni campione si è riscontrato una compatibilità discreta, ad eccezione del primo ed il quarto campione. Per questi ultimi infatti si è ricavato un valore di $\lambda$ che mostra una non compatibilità delle due differenti fasi. La spiegazione di tale incompatibilità dei coefficienti angolari è imputabile alle modalità di presa dati. L'incompatibilità suggerisce perlomeno che la trasformazione non sia stata del tutto reversibile o quasi statica. 
 
 \begin{table}[h!]
 \centering
@@ -260,10 +264,10 @@ Calcolando $\lambda$ tra i coefficienti angolari di ogni campione si è riscontr
 \end{table}
 
 Come atteso, inoltre, il coefficiente angolare aumenta in funzione della temperatura, come si può dedurre dall'equazione sopra riportata.
-Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbero rimanere costante in tutti i campioni considerati, tendono ad aumentare con l'innalzarsi della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia  differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del contenitore Dewer. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente con il passare del tempo, determina una piccola riduzione del volume dei tubicini, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termica di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato e dunque il volume del gas presente all'interno dei tubicini. A causa di tali problemi riscontrati per il valore delle intercette calcolate, non si riesce a dare una stima del volume del gas presente all'interno dei tubicini in quanto i valori sono tra loro poco compatibili. 
+Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbero rimanere costanti in tutti i campioni considerati, tendono ad aumentare in valore assoluto con l'innalzarsi della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del contenitore Dewar. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente con il passare del tempo, determina una piccola riduzione del volume dei tubicini, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto, ovvero che l'intercetta cambi in dipendenza della temperatura del campione, invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termica di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato in valore assoluto e dunque il volume del gas presente all'interno dei tubicini. A causa di tali problemi riscontrati per il valore delle intercette calcolate, non si riesce a dare una stima del volume del gas presente all'interno dei tubicini in quanto i valori sono tra loro poco compatibili. 
 
 %chi quadro
-Per quanto riguarda il valore ottenuto effettuando il test del $\chi^2$ sul fit realizzato, si ha che il rapporto $\chi^2/GDL$ è sempre inferiore ad 1, dunque si può affermare che l'ipotesi di linearità viene accettata con un livello di confidenza del 99.5\%.`
+Per quanto riguarda il valore ottenuto effettuando il test del $\chi^2$ sul fit realizzato, si ha che il rapporto $\chi^2/GDL$ è sempre inferiore ad 1, dunque si può affermare che l'ipotesi di linearità viene accettata con un livello di confidenza del 99.5\%.
 È inoltre stato stimata la $\sigma_{V, post}$ che per ogni campione, sia in compressione che decompressione è risultata inferiore rispetto alla stima dell'errore sul volume, quest'ultimo pari a $\SI{0.01}{\centi\meter\cubed}$. Tuttavia però la differenza fra i due errori non è tale da far risultare uno dei due una sottostima o sovrastima. Si può affermare che le due stime siano consistenti. Vengono riportate le stime delle $\sigma_{V, post}$ nella Tabella \ref{tab:sigma_post}.
 
 %tabella sigma a posteriori sui volumi
@@ -291,27 +295,26 @@ Vengono infine riportate le stime del numero di moli totali ottenute da ogni cam
     \centering
     \begin{tabular}{|c|c|c|}
         \hline
-        Campione & $n_{comp}$ & $n_{decomp}$\\ 
+        \multirow{2}{*}{Campione} & $n_{comp}$ & $n_{decomp}$\\ 
         & $10^{-7}$[mol] & $10^{-7}$[mol]\\ \hline
-        $1$ & $10875\pm7$ &  $10951\pm8$\\ \hline
+         \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $10875\pm7$ &  $10951\pm8$\\ \hline
         $2$ & $10917\pm8$ &  $10927\pm7$\\ \hline
-        $3$ & $10881\pm9$ &  $10878\pm10$\\ \hline
+         \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $10881\pm9$ &  $10878\pm10$\\ \hline
         $4$ & $10720\pm8$ &  $10826\pm9$\\ \hline
-        $5$ & $10778\pm8$ &  $10791\pm9$\\ \hline
+         \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $10778\pm8$ &  $10791\pm9$\\ \hline
         $6$ & $10801\pm9$ &  $10802\pm9$\\ \hline
-        Media & $10829\pm5$   & $10862\pm5$\\ \hline
+         \rowcolor[rgb]{0.85,0.85,0.85}Media & $10829\pm5$   & $10862\pm5$\\ \hline
     \end{tabular}
-    \caption{Caption}
-    \label{tab:my_label}
+    \caption{Numero di moli in compressione e decompressione}
+    \label{tab:n_moli}
 \end{table}
 %compressione & decompressione moli
 
+Si suppone che l'errore riportato per la stima delle moli sia una sottostima dell'errore effettivo di cui è affetto il valore. Nelle successive fasi dell'analisi dati si cercherà di stimare al meglio tale errore.
 
+Per verificare l'ipotesi che tutti questi valori derivino da un'unica distribuzione, si è eseguito un test della t di Student su due campioni. Scelto un livello di confidenza del 99.5\% l'ipotesi è non è stata rigettata in quanto con $10 GDL$ il test fornisce un valore di $\approx 0.83 < t_{Th, CL. 99.5\%}$ pertanto i diversi campioni forniscono stime coerenti per il computo del numero di moli.\newline
 
-
-Per verificare l'ipotesi che tutti questi valori derivino da un'unica distribuzione, si è eseguito un test della t di Student su due campioni. Scelto un livello di confidenza del 99.5\% l'ipotesi è non è stata rigettata in quanto con $10 GDL$ il test fornisce un valore di $\approx 0.83 < t_{Th, CL. 99.5\5}$.\newline
-
-Dopo aver valutato le possibili compatibilità fra grandezze ottenute dalla fase in compressione e decompressione è possibile assumere il gas come ideale in quanto non ci sono grandi differenze fra le due fasi e la trasformazione può per questi campioni essere generalmente intesa come quasi statica. 
+Dopo aver valutato le possibili compatibilità fra grandezze ottenute dalla fase in compressione e decompressione è possibile assumere il gas come ideale in quanto non ci sono grandi differenze fra le due fasi e la trasformazione può per questi campioni essere generalmente intesa come quasi statica. \\
 
 
 \begin{wrapfigure}{r}{0.5\textwidth}
@@ -342,43 +345,19 @@ Si osserva infatti che quando la misurazione del volume rientra nel range per le
 
 \subsection{Stima dello zero assoluto}
 Per la stima dello zero assoluto si sono ottenuti due differenti valori, uno per la fase di compressione e l'altro per la fase di decompressione, a partire dalle 6 isoterme analizzate in precedenza.
-Ottenuti i coefficienti angolari delle rette interpolanti le coppie di dati (1/P,V) per la fase di compressione e di decompressione, sono stati generati dei grafici aventi sull'asse delle ascisse le temperature espresse in gradi Celsius di ogni campione e sull'asse delle ordinate gli stessi coefficienti angolari. Sono stati generati due grafici e sono stati conseguentemente interpolati gli stessi per ottenere i parametri del fit lineare. La retta interpolante i dati corrisponde a 
+Ottenuti i coefficienti angolari delle rette interpolanti le coppie di dati (1/P,V) per la fase di compressione e di decompressione, sono stati generati dei grafici aventi sull'asse delle ascisse le temperature espresse in gradi Celsius di ogni campione e sull'asse delle ordinate gli stessi coefficienti angolari. Sono stati generati due grafici e sono stati conseguentemente interpolati i dati degli stessi per ottenere i parametri del fit lineare. La retta interpolante i dati corrisponde a 
 \begin{equation*}
-    B=n R \cdot T_{\si{\celsius}} + n R \cdot T_{0}
+    B=n R T_{\si{\celsius}} + n R T_{0}
 \end{equation*}
-dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora considerata in gradi centigradi, in modo da poter stimare, cercando l'intersezione di tale retta con l'asse delle ascisse, il valore di $T_0$.
-I parametri ottenuti dal fit, corrispondenti per il coefficiente angolare a $n R$ e per l'intercetta, ovvero $n R T_0$  vengono riportati in un'apposita legenda all'interno dei grafici. I valori delle intercette risultano avere tra loro compatibilità ottima e $\lambda$ calcolato per i coefficienti angolari risulta invece $2.5$, dunque risultano anche essi compatibili. Prestando attenzione ai valori calcolati effettuando il test del $\chi^2$ sul fit lineare, si osserva che si ha un valore sempre molto maggiore dei 4 GDL, tale da venire sempre rigettato. La causa di tale fenomeno è da ricercarsi nella grandezza dell'errore associato a i coefficienti angolari. Esso infatti risulta probabilmente sottostimato e dunque causa dell'aumento del valore calcolato.  Nello specifico si osserva che per il campione in compressione si è ottenuto un valore pari a $209$, molto lontano dal valore atteso.
-Osservando il grafico si osserva che la coppia di punti $(B,T)_4$, riferita alla quarta isocora, è molto distante rispetto alla retta di interpolazione, e dunque causa dell'enorme valore del $\chi^2$ ottenuto. Quanto appena affermato trova riscontro alla tabella \ref{tab:compatibilita_coeff_ang_compress_decompress}, dove si è ottenuta una compatibilità tra i coefficienti angolari dei campioni 1 e 4, tra la fase di compressione e decompressione, molto maggiore di $3$.
-Come già precedentemente affermato, si è ottenuta una stima di $T_0$ tramite la seguente:
-\begin{equation*}
-    T_0=\frac{a}{b}=\frac{n R  T_0} {n R}
-\end{equation*}
-e si è ricavato il valore del suo errore tramite propagazione degli errori casuali, considerando opportunamente la covarianza tra i parametri del fit lineare.
-I valori di $T_0$ ottenuti vengono riportati nella Tabella \ref{tab:zero_ass}, con le relative compatibilità con il valore $\SI{-273.15}{\celsius}$.
+dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora considerata in gradi centigradi, in modo da poter stimare, cercando l'intersezione di tale retta con l'asse delle ascisse, il valore di $T_0$. \newline
 
 \begin{table}[h!]
     \centering
-    \begin{tabular}{|c|c|c|}
-        \hline
-        & $T_{0}$ [$\si{\kelvin}$] & $\lambda$\\ \hline
-        Compressione & $-299\pm2$ & $15$\\ \hline
-        Decompressione & $-307\pm2$ & $19$\\ \hline
-    \end{tabular}
-    \caption{Stime dello zero assoluto}
-    \label{tab:zero_ass}
-\end{table}
-
-
-I valori della compatibilità mostrano che i valori di $T_0$ ottenuti risultano non compatibili con il valore . Si è calcolato infatti un valore che molto lontano da i dati interpolati, dunque una piccola variazione degli stessi, o anche una piccola variazione dei parametri del fit comporta una grande differenza del valore di $T_0$ calcolato. La stima di $T_0$ risulta dunque molto imprecisa.
-Al fine di valutare al meglio i parametri ottenuti dal fit, in quanto si suppone che siano molto imprecisi a causa dell'esiguo numero di dati e dell'errore di $B$ eccessivamente piccolo, si è deciso di rappresentare i grafici \ref{fig:par_compr}, e \ref{fig:par_deco}. 
-Sono state infatti rappresentate delle curve di livello, ovvero degli ellissoidi sui quali il logaritmo del rapporto delle verosimiglianze tra i valori ottenuti dal fit lineare e altri parametri, ha un valore fissato. Il centro di tale grafico corrisponde a $\ln\frac{\mathcal{L}(a\hat,b\hat)}{\mathcal{L}(a,b)}=0$, ed è dove sono posizionati i valori ottenuti dal fit lineare, nello specifico le coppie di dati $(25.27,0.0845)$ e $(25.42,0.0827)$.\footnote{Vengono lasciate più cifre decimali rispetto all'errore riportato nei grafici al fine di identificare al meglio il centro del paraboloide} I valori presenti all'interno della superficie blu chiaro invece sono i valori dove $\ln\frac{\mathcal{L}(a\hat,b\hat)}{\mathcal{L}(a,b)}$ è compreso tra 0 e 0.5, nella superficie blu scuro invece i valori compresi tra 0.5 e 1, ed infine nella superficie rossa i valori compresi tra 1 e 1.5. Fissando $\ln\frac{\mathcal{L}(a\hat,b\hat)}{\mathcal{L}(a,b)}= 0.5$, si riesce a delineare l'ellisse sulla quale è possibile definire l'errore sui parametri a e b del fit. L'errore riportato dei parametri risulta essere compatibile con tale stima di $\sigma_a$ e $\sigma_b$ appena descritta.I grafici rappresentai mostrano anche i parametri $a e b$ del fit lineare sono anti-correlati, e che, data la lunghezza dell'asse minore del paraboloide rappresentato, rapportato alla lunghezza dell'asse maggiore, mostra che il valore della covarianza tra i parametri non è molto ingente. 
-
-
-\begin{table}[h!]
-    \centering
+    \caption{Parametri fit T_0}
+    \label{tab:fit_t0}
     \begin{tabular}{|c|c|c|c|}
         \cline{2-4}
-        \multicolumn{1}{c|}{}& \multirow{2}{*}{Campione} & Temperatura & Angolare\\ 
+        \multicolumn{1}{c|}{}& \multirow{2}{*}{Campione} & Temperatura & B\\ 
         \multicolumn{1}{c|}{}& &[\si{\celsius}] & [\si{\kilogram\cdot\centi\meter\per\celsius}]\\ \hline
         \multirow{6}{*}{\rotatebox[origin=c]{90}{Compressione}}& \cellcolor[rgb]{0.85,0.85,0.85}$1$ & \cellcolor[rgb]{0.85,0.85,0.85}$5.9130\pm0.0009$ & \cellcolor[rgb]{0.85,0.85,0.85}$25.72\pm0.02$\\ \cline{2-4}
         & $2$ & $15.6205\pm0.0005$ & $26.72\pm0.02$\\ \cline{2-4}
@@ -393,21 +372,9 @@ Sono state infatti rappresentate delle curve di livello, ovvero degli ellissoidi
         & $4$ & $35.101\pm0.001$ & $28.28\pm0.02$\\ \cline{2-4}
         & \cellcolor[rgb]{0.85,0.85,0.85}$5$ & \cellcolor[rgb]{0.85,0.85,0.85}$44.443\pm0.003$ & \cellcolor[rgb]{0.85,0.85,0.85}$29.05\pm0.03$\\ \cline{2-4}
         & $6$ & $53.934\pm0.008$ & $29.95\pm0.02$\\ \hline
-        
     \end{tabular}
-    \caption{Parametri fit T_0}
-    \label{tab:fit_t0}
 \end{table}
 
-
-
-%parlare del t di student sulle medie-
-
-%analisi di tutti i coeff angolari in compressione e decompressione su stesso grafico in funzione di temperatura stimata
-%   - tutta la algebretta del cazzo che mostra come trovare lo zero assoluto
-%   - stima del valore di zero assoluto e commento a suo errore
-%   - perchè alcuni dati sono fuori dal fit e non vicini a quello che ci si aspetta-> errore in coeff angolare o temperatura?
-%    - stima moli da fit generale per vedere se sensato e compatibili con stime precedenti
 \begin{figure}[h!]
     \centering
     \caption{Stima di $T_0$ in compressione}
@@ -439,6 +406,70 @@ Sono state infatti rappresentate delle curve di livello, ovvero degli ellissoidi
         \label{fig:par_deco}
     }}
 \end{figure}
+I parametri ottenuti dal fit, corrispondenti per il coefficiente angolare a $n R$ e per l'intercetta, ovvero $n R T_0$  vengono riportati in un'apposita legenda all'interno dei grafici. I valori delle intercette risultano avere tra loro compatibilità ottima e $\lambda$ calcolato per i coefficienti angolari risulta invece $2.5$, dunque risultano anche essi compatibili. Prestando attenzione ai valori calcolati effettuando il test del $\chi^2$ sul fit lineare, si osserva che si ha un valore sempre molto maggiore dei 4 GDL, tale da far rigettare sempre l'ipotesi nulla. La causa di tale fenomeno è da ricercarsi nella grandezza dell'errore associato a i coefficienti angolari. Esso infatti risulta probabilmente sottostimato e dunque causa dell'aumento del valore calcolato.  Nello specifico si osserva che per il campione in compressione si è ottenuto un valore pari a $209$, molto lontano dal valore atteso.
+Osservando il grafico si osserva che la coppia di punti $(B,T)_4$, riferita alla quarta isocora, è molto distante rispetto alla retta di interpolazione, e dunque causa dell'enorme valore del $\chi^2$ ottenuto. Quanto appena affermato trova riscontro nlla tabella \ref{tab:compatibilita_coeff_ang_compress_decompress}, dove si è ottenuta una compatibilità tra i coefficienti angolari dei campioni 1 e 4, tra la fase di compressione e decompressione, molto maggiore di $3$.\\
+Come già precedentemente affermato, si è ottenuta una stima di $T_0$ tramite la seguente:
+\begin{equation*}
+    T_0=\frac{a}{b}=\frac{n R  T_0} {n R}
+\end{equation*}
+e si è ricavato il valore del suo errore tramite propagazione degli errori casuali, considerando opportunamente la covarianza tra i parametri del fit lineare.
+I valori di $T_0$ ottenuti vengono riportati nella Tabella \ref{tab:zero_ass}, con le relative compatibilità con il valore teorico di $\SI{-273.15}{\celsius}$.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        & $T_{0}$ [$\si{\kelvin}$] & $\lambda$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}Compressione & $-299\pm2$ & $15$\\ \hline
+        Decompressione & $-307\pm2$ & $19$\\ \hline
+    \end{tabular}
+    \caption{Stime dello zero assoluto}
+    \label{tab:zero_ass}
+\end{table}
+
+
+I valori della compatibilità mostrano che i valori di $T_0$ ottenuti risultano non compatibili con $T_{0, Th}$.
+Si è estrapolato infatti un valore molto lontano da i dati interpolati, dunque anche una piccola variazione degli stessi, o una piccola variazione per fluttuazioni statistiche dei parametri del fit comporta una grande differenza del valore di $T_0$ calcolato. La stima di $T_0$ eseguita con questo metodo pertanto risulta molto imprecisa.
+Al fine di valutare al meglio i parametri ottenuti dal fit, in quanto si suppongono molto imprecisi a causa del ridotto numero di gradi di libertà e dell'errore di $B$ eccessivamente piccolo, si è deciso di rappresentare i Grafici \ref{fig:par_compr}, e \ref{fig:par_deco}. 
+Sono state infatti rappresentate delle curve di livello, ovvero degli ellissoidi sui quali il logaritmo del rapporto delle verosimiglianze tra i valori di best fit ottenuti dalla minimizzazione del $\chi^2$ e altre coppie di parametri alternativi, ha un valore fissato. Il centro di tale grafico corrisponde a $\ln\frac{\mathcal{L}(\hat a,\hat b)}{\mathcal{L}(a,b)}=0$, ed è situato in corrispondenza dei valori di best fit, nello specifico le coppie di dati $(25.27,0.0845)$ e $(25.42, 0.0827)$.\footnote{Vengono lasciate più cifre decimali rispetto all'errore riportato nei grafici al fine di identificare al meglio il centro del paraboloide}
+I valori presenti all'interno della superficie blu chiaro invece sono i valori dove $\ln\frac{\mathcal{L}(\hat a,\hat b)}{\mathcal{L}(a,b)}$ è compreso tra 0 e 0.5, nella superficie blu scuro invece i valori compresi tra 0.5 e 2, ed infine nella superficie rossa i valori che distano $3\cdot\sigma$ dai valori del best fit. Fissando $\ln\frac{\mathcal{L}(\hat a,\hat b)}{\mathcal{L}(a,b)}= 0.5$, si riesce a delineare l'ellisse sulla quale è possibile definire l'errore sui parametri a e b del fit. L'errore dei parametri riportato nei grafici risulta essere coerente con la stima di $\sigma_a$ e $\sigma_b$ appena descritta. I grafici rappresentati mostrano inoltre che i parametri $a$ e $b$ del fit lineare sono  tra loro anti-correlati e che, data la lunghezza dell'asse minore del paraboloide rappresentato, rapportata alla lunghezza dell'asse maggiore, mostra che il valore della covarianza tra i parametri non è molto ingente. 
+La stima di $Cov(a,b)= -\overline{T}\cdot \sigma_b^2$, utilizzata nella propagazione degli errori per il calcolo di $T_0$, avente ordine di grandezza di $\approx -1\cdot10^{-5}$, risulta dunque ragionevole.
+
+%nuova stima delle moli da coeff angol
+Dalle informazioni ottenute dall'interpolazione lineare è stato possibile stimare con un nuovo metodo il numero di moli presenti all'interno del volume considerato. Si ha infatti che il valore del coefficiente angolare interpolante i dati è pari a $n \cdot R$ dal quale si ricava il valore di n tramite la seguente: 
+\begin{equation*}
+    n= \frac{b_{angolare}}{R}
+\end{equation*}
+convertendo opportunamente la costante R. A tale stima è stato associato l'errore ottenuto mediante propagazione degli errori casuali. I valori di $n$ ottenuti vengono riportati nella seguente tabella. 
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \cline{2-3}
+        \multicolumn{1}{c|}{}& n & $\sigma_{posteriori}$\\ 
+        \multicolumn{1}{c|}{}& $10^{-5}$[mol] & $10^{-5}$[mol]\\\hline
+        \rowcolor[rgb]{0.85,0.85,0.85}Comp & $100\pm1$ & $4$\\ \hline
+        Decomp & $98\pm1$ & $1$\\ \hline
+    \end{tabular}
+    \caption{Moli ricavate da grafici}
+    \label{tab:moli_grafici}
+\end{table}
+
+Al fine di valutare al meglio l'errore delle moli di cui si è appena fatta una stima, si è deciso di stimare l'errore del coefficiente angolare utilizzando l'errore a posteriori sulla grandezza posizionata sull'asse delle ordinate. La stima ottenuta risulta essere molto concorde con la stima  dell'errore ottenuto tramite propagazione degli errori casuali, dunque $\sigma_b$ utilizzato risulta valido. Nel campione in compressione, a causa della discrepanza rispetto all'andamento del quarto punto, si ha una leggera differenza tra le due stime.
+Si riportano nella tabella i valori dell'errore delle moli ottenute utilizzando $\sigma_b^post$.
+
+
+
+
+
+%parlare del t di student sulle medie-
+
+%analisi di tutti i coeff angolari in compressione e decompressione su stesso grafico in funzione di temperatura stimata
+%   - tutta la algebretta del cazzo che mostra come trovare lo zero assoluto
+%   - stima del valore di zero assoluto e commento a suo errore
+%   - perchè alcuni dati sono fuori dal fit e non vicini a quello che ci si aspetta-> errore in coeff angolare o temperatura?
+%    - stima moli da fit generale per vedere se sensato e compatibili con stime precedenti
+
 
 
 \subsection{Stima delle moli campionarie}
@@ -487,7 +518,7 @@ Sono stati realizzati i seguenti grafici a partire dalle terne di dati relative 
     }}
     \label{fig:isocore}
 \end{figure}
-Si è poi eseguito un fit lineare tramite il metodo del minimo $\chi^2$ ed i parametri del fit calcolati vengono riportati direttamente nel Grafico \ref{fig:prima_isocora} e \ref{fig:seconda_isocora}. In Tabella \ref{tab:PARAMETRI FIT} si riportano infine i quantificatori di bontà del fit ottenuto.
+Si è poi eseguito un fit lineare tramite il metodo del minimo $\chi^2$ ed i parametri del fit calcolati vengono riportati direttamente nel Grafico \ref{fig:prima_isocora} e \ref{fig:seconda_isocora}. In Tabella \ref{tab:quantificatori_isocore} si riportano infine i quantificatori di bontà del fit ottenuto.
 
 \begin{table}[h!]
     \centering
@@ -498,7 +529,7 @@ Si è poi eseguito un fit lineare tramite il metodo del minimo $\chi^2$ ed i par
         Seconda isocora & $1.85202$ & $0.993837$ & $17.9304$ \\ \hline
     \end{tabular}
     \caption{Quantificatori su interpolazioni di isocore}
-    \label{tab:my_label}
+    \label{tab:quantificatori_isocore}
 \end{table}
 
 
@@ -508,7 +539,7 @@ La legge che lega queste due grandezze è
     P=\frac{nR}{V}\cdot T
 \end{equation*}
 da cui, tramite il confronto con i coefficienti del fit, è possibile ricavare la stima del numero di moli per ciascuna isocora. Il valore dell'intercetta, non previsto dal modello teorico, compare nei parametri del fit ed è attribuibile a possibili fluttuazioni statistiche. In entrambi i casi tale valore non è compatibile con lo zero, come previsto dal modello teorico.
-Si riportano le stime delle moli ottenute in Tabella \ref{tab:MOLI FIT ISOCORE} con le relative propagazioni. È immediato verificare che in particolare per la prima isocora riferita agli $\SI{8.61}{\centi\meter\cubed}$ si ottiene un valor molto differente da quello atteso. Ciò suggerisce, che sebbene il comportamento del gas sia in ottima approssimazione ideale, non è possibile stimare con accuratezza il numero di moli contenute. Una possibile causa d'errore è dovuta al non aver preso in considerazione anche il volume dei tubicini. L'equazione di stato del gas infatti, per la corretta stima del numero di moli totali prevede l'impiego del volume totale. Il volume a disposizione dai dati infatti è solo la stima di quello presente all'interno della siringa.
+Si riportano le stime delle moli ottenute in Tabella \ref{tab:moli_isocore} con le relative propagazioni. È immediato verificare che in particolare per la prima isocora riferita agli $\SI{8.61}{\centi\meter\cubed}$ si ottiene un valor molto differente da quello atteso. Ciò suggerisce, che sebbene il comportamento del gas sia in ottima approssimazione ideale, non è possibile stimare con accuratezza il numero di moli contenute. Una possibile causa d'errore è dovuta al non aver preso in considerazione anche il volume dei tubicini. L'equazione di stato del gas infatti, per la corretta stima del numero di moli totali prevede l'impiego del volume totale. Il volume a disposizione dai dati infatti è solo la stima di quello presente all'interno della siringa.
 
 %tabella stime moli in isocore
 \begin{table}[h!]
@@ -536,6 +567,27 @@ A seguito di queste considerazioni, questa stima risolta molto approssimativa e 
 %valutazione quasi-staticità di compressioni e decompressioni
 %   - compatibilità coeff angolari per comp decomp per tutte e 3
 %   - verifica quantitativa di differenza fra i 3 campioni-> lento compatte intorno a retta, normale è un pò separato, veloce sono separate
+Si sono infine analizzate le trasformazioni isoterme realizzate variando la velocità di compressione e decompressione della siringa.
+Il procedimento per valutare la quasi staticità e reversibilità è stato un calcolo di compatibilità fra i coefficienti angolari dei grafici 1/P vs V ottenuti in modo analogo a quanto riportato precedentemente in analisi. Ci si aspetta che per una trasformazione realizzata sotto condizioni di quasi staticità e reversibilità i due coefficienti angolari siano fra loro compatibili. I valori di compatibilità vengono riportati in Tabella \ref{tab:comp_ango_qs}. Si verifica subito che i coefficienti angolari risultano compatibili solo nei campioni realizzata a velocità intermedia. Questo risultato può suggerire che la trasformazione fatta con velocità lenta e veloce non è quasi statica, ma questa affermazione risulta contrastante con le previsioni teoriche. È infatti probabile che $\lambda$ per il campione $3_{lento}$ risenta fortemente dell'errore inferiore sulla stima del coefficiente angolare. La valutazione di reversibilità pertanto con questa stima risulta piuttosto inaccurata. Solo per i campioni realizzati con variazioni intermedie e veloci è in grado di quantificare la reversibilità della trasformazione.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Campione & $\lambda_{comp-decomp}$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $0.2$\\ \hline
+        $3_{lenta}$ & $9.9$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3_{veloce}$ & $5.1$\\ \hline
+    \end{tabular}
+    \caption{Compatibilità tra coefficienti angolari}
+    \label{tab:comp_ango_qs}
+\end{table}
+
+Si è dunque preferita un'analisi qualitativa osservando la distribuzione dei dati 1/P vs V come riportato nel Grafico \ref{fig:IL GRAFIC OMALVAGIO DI FABIO}. Si osserva che più la variazione di volume della siringa è repentina più le misurazioni nella fase in compressione sono distanziate dal quelle in decompressione. Questo fenomeno può essere attribuibile alla non quasi staticità della trasformazione. In particolare i punti in compressione hanno ordinata sistematicamente maggiore di quelli in fase di decompressione. Da questa ultima considerazione pertanto si possono assumere i dati delle isoterme a velocità lenta ed intermedia come quasi statiche a differenza di quella l'isoterma ad espansione rapida.  
+
+
+\subsection{Stima numero di moli finale}
+Si riassumono in questa sezione i diversi metodi usati per la stima del numero di moli per i 6 campioni di isoterme.
+
 
 \section{Conclusioni}
 
