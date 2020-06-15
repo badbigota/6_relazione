@@ -30,3 +30,8 @@ struct info
     double testchi;
     double testpearson;
 };
+
+struct scarti{
+    vector<double> x;
+    vector<double> y;
+};

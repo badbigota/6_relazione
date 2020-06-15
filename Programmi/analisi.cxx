@@ -87,6 +87,28 @@ int main()
         }
     }
 
+    /*Stampa scarti per tutte le coompress_sc, decompress_sc*/
+
+    auto scarti_compress = get_scarti(compressione_sc);
+    auto scarti_decompress = get_scarti(decompressione_sc);
+    for (int i = 0; i < scarti_compress.size(); i++)
+    {
+        ofstream fout_sc_compress("../Dati/Scarti/" + to_string(i) + "_comp.txt");
+        for (int j = 0; j < scarti_compress[i].x.size(); j++)
+        {
+            fout_sc_compress << scarti_compress[i].x[j] << "\t" << scarti_compress[i].y[j] << endl;
+        }
+    }
+
+    for (int i = 0; i < scarti_decompress.size(); i++)
+    {
+        ofstream fout_sc_decomp("../Dati/Scarti/" + to_string(i) + "_decomp.txt");
+        for (int j = 0; j < scarti_decompress[i].x.size(); j++)
+        {
+            fout_sc_decomp << scarti_decompress[i].x[j] << "\t" << scarti_decompress[i].y[j] << endl;
+        }
+    }
+
     //Definisco range indice iniziale per prendere le temperature, separatamente per compress e decompress
     vector<int> index_compr = {0, 299, 239, 0, 161, 83}; //dove la temperatura è massima dopo il calo a parabola, problema sono nella decompressione
     vector<int> index_depress = {0, 0, 0, 0, 0, 0};

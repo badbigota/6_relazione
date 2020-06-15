@@ -122,6 +122,58 @@ vector<raw_data> scarta_code(vector<raw_data> &dati_grezzi)
     return temp_vec;
 }
 
+//Scarta tutti i dati superflui dati i grafici degli scari
+vector<raw_data> scarta_per_scarti(vector<raw_data> dati_grezzi)
+{
+    vector<raw_data> temp_vec;
+    for (auto d : dati_grezzi)
+    {
+        raw_data temp_vec_temp;
+        for (int i = 0; i < d.pressure.size(); i++)
+        {
+            if ((1. / d.pressure[i] > 0.45) && (1. / d.pressure[i] < 0.7))//condizione fatta gaurdando i grafici
+            {
+                temp_vec_temp.pressure.push_back(d.pressure[i]);
+                temp_vec_temp.volume.push_back(d.volume[i]);
+                temp_vec_temp.temp.push_back(d.temp[i]);
+                temp_vec_temp.err_volume.push_back(d.err_volume[i]);
+            }
+            temp_vec_temp.n_camp=d.n_camp;
+        }
+        temp_vec.push_back(temp_vec_temp);
+    }
+    return temp_vec;
+}
+
+//Per restituire il giusto reciproco
+vector<double> reciproco(vector<double> &dati_pressione)
+{
+    vector<double> temp_vec;
+    for (auto d : dati_pressione)
+    {
+        temp_vec.push_back(1. / d);
+    }
+    return temp_vec;
+}
+
+vector<scarti> get_scarti(vector<raw_data> &dati)
+{
+    vector<scarti> temp_scarti;
+    for (int i = 0; i < dati.size(); i++)
+    {
+        double coeff_b = b_angolare(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
+        double coeff_a = a_intercetta(reciproco(dati[i].pressure), dati[i].volume, dati[i].err_volume);
+        scarti temp_scarti_singolo;
+        for (int j = 0; j < dati[i].pressure.size(); j++)
+        {
+            temp_scarti_singolo.x.push_back(1. / (dati[i].pressure[j]));
+            temp_scarti_singolo.y.push_back(dati[i].volume[j] - coeff_a - coeff_b * (1. / dati[i].pressure[j]));
+        }
+        temp_scarti.push_back(temp_scarti_singolo);
+    }
+    return temp_scarti;
+}
+
 vector<int> get_center(vector<raw_data> &raw)
 {
     vector<int> centri;
@@ -164,17 +216,6 @@ vector<info> get_moli(vector<raw_data> &dati_grezzi)
         temp_info.push_back(temp_campione);
     }
     return temp_info;
-}
-
-//Per restituire il giusto reciproco
-vector<double> reciproco(vector<double> &dati_pressione)
-{
-    vector<double> temp_vec;
-    for (auto d : dati_pressione)
-    {
-        temp_vec.push_back(1. / d);
-    }
-    return temp_vec;
 }
 
 //Effettua interpolazione su 1/p in ascissa e v in ordinata
@@ -237,8 +278,8 @@ info interpolazione_moli(vector<info> &joined)
     temp_infoz.err_n_moli = sigma_b(x, y, err_y) * g * 0.01 / r_gas;
     temp_infoz.testchi = test_chi(x, y, err_y);
     temp_infoz.testpearson = pearson(x, y);
-    temp_infoz.sigma_b_post = sigma_b_posteriori(x,y);
-    temp_infoz.sigma_a_post = sigma_a_posteriori(x,y);
+    temp_infoz.sigma_b_post = sigma_b_posteriori(x, y);
+    temp_infoz.sigma_a_post = sigma_a_posteriori(x, y);
     return temp_infoz;
 }
 
