@@ -97,7 +97,6 @@ Impiegando la strumentazione fornita, si sono realizzate le prese dati variando 
 
 Tutti i dati acquisiti ad intervalli di tempo regolari sono stati forniti dalla strumentazione elettronica dell'apparato. Per ogni misurazione effettuata si sono registrati i valori di pressione, temperatura e volume. Quest'ultimo è stato calcolato dal software a partire dalla posizione dello stantuffo della siringa, poi moltiplicata per la sezione della stessa ma non considerando nel computo il volume di gas contenuto nei tubicini, in quanto superfluo ai fini dell'esperienza. Nonostante ciascun sensore, rispetto agli altri, sia indipendente nell'acquisizione, è comunque possibile che si crei una correlazione statistica nel momento dell'acquisizione del segnale elettrico a seconda di come i circuiti sono tra loro collegati.
 
-
 \section{Analisi e Discussione}
 \subsection{Fasi compressione e decompressione}\label{par:compress}
 %separazione fasi compressione e decompressione
@@ -135,14 +134,13 @@ Si è deciso comunque di stimare la temperatura dell'isoterma come media aritmet
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=10cm]{temperatura_secondo.pdf}
+    \includegraphics[width=9cm]{temperatura_secondo.pdf}
     \caption{Temperature secondo campione}
     \label{fig:campione_temperatura}
 \end{figure}
 
 Specificatamente per il secondo campione, si nota la presenza di alcuni punti attorno alla 800esima misurazione che si discostano fortemente dalle temperature circostanti. Ciò è probabilmente imputabile ad un errore di lettura del sensore. Si sono scartati tali valori,anche se di poco influenti per il calcolo di $\overline{T}$, data la dimensione del campione.\\
-
-Altra osservazione derivata da un'attenta analisi dei grafici, è che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur il contenitore sia isolante, vi sono infatti comunque dispersioni di calore dovute alle pareti non perfettamente adiabatiche, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione che vengono riportate nella Tabella \ref{tab:temp_unica}.
+Altra osservazione derivata da un'attenta analisi dei grafici, è che se la temperatura impostata del gas risulta maggiore della temperatura dell'ambiente circostante, stimata a circa $\SI{20}{\celsius}$, allora la prima tende a diminuire per raggiungere l'equilibrio termico con l'ambiente esterno. Seppur il contenitore sia isolante, vi sono infatti comunque dispersioni di calore dovute alle pareti non perfettamente adiabatiche, alla parte di tubicino di plastica che fuoriesce dal tappo per connettersi ai sensori e la parte di siringa non immersa nel fluido. Per questa ragione si è stimata un'unica temperatura sia per la fase in compressione che per quella in decompressione che vengono riportate nella Tabella \ref{tab:temp_unica}. L'errore associato alla temperatura varia a seconda del numero di misurazioni all'interno del campione i-esimo considerato. %grafico dettagli per picco temperature
 
 \begin{table}[h!]
     \centering
@@ -162,9 +160,6 @@ Altra osservazione derivata da un'attenta analisi dei grafici, è che se la temp
     \caption{Temperature uniche per ciascun campione}
     \label{tab:temp_unica}
 \end{table}
-
-L'errore associato alla temperatura varia a seconda del numero di misurazioni all'interno del campione i-esimo considerato. %grafico dettagli per picco temperature
-
 
 %precednetenetemenete
 \subsection{Analisi delle fasi di compressione e decompressione}
@@ -264,9 +259,8 @@ Calcolando $\lambda$ tra i coefficienti angolari di ogni campione si è riscontr
 \end{table}
 
 Come atteso, inoltre, il coefficiente angolare aumenta in funzione della temperatura, come si può dedurre dall'equazione sopra riportata.
-Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbero rimanere costanti in tutti i campioni considerati, tendono ad aumentare in valore assoluto con l'innalzarsi della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del contenitore Dewar. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente con il passare del tempo, determina una piccola riduzione del volume dei tubicini, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto, ovvero che l'intercetta cambi in dipendenza della temperatura del campione, invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termica di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato in valore assoluto e dunque il volume del gas presente all'interno dei tubicini. A causa di tali problemi riscontrati per il valore delle intercette calcolate, non si riesce a dare una stima del volume del gas presente all'interno dei tubicini in quanto i valori sono tra loro poco compatibili. 
+Focalizzando poi l'attenzione sulle intercette, si osserva che nei vari grafici tali valori, che dovrebbero rimanere costanti in tutti i campioni considerati, tendono ad aumentare in valore assoluto con l'innalzarsi della temperatura e si osserva inoltre che nelle due differenti fasi di compressione e di decompressione il valore dell'intercetta sia differente. La spiegazione di questo secondo fenomeno è da ricercarsi nel non perfetto isolamento termico del contenitore Dewar. Infatti, a causa della perdita di calore del serbatoio non perfettamente adiabatico, si ha una diminuzione della temperatura che, conseguentemente con il passare del tempo, determina una piccola riduzione del volume dei tubicini, manifestata nella differenza del valore dell'intercetta calcolato. Sapendo che la fase di decompressione è stata eseguita successivamente alla fase di compressione, si ha che il valore dell'intercetta sia più grande nella fase di decompressione piuttosto che nella fase di compressione. La spiegazione del primo fenomeno descritto, ovvero che l'intercetta cambi in dipendenza della temperatura del campione, invece potrebbe essere legata al materiale plastico con il quale sono stati costruiti i tubicini e alla dilatazione termica di tale materiale. Infatti all'aumentare della temperatura aumenta conseguentemente il valore dell'intercetta calcolato in valore assoluto e dunque il volume del gas presente all'interno dei tubicini. A causa di tali problemi riscontrati per il valore delle intercette calcolate, non si riesce a dare una stima del volume del gas presente all'interno dei tubicini in quanto i valori sono tra loro poco compatibili.
 
-%chi quadro
 Per quanto riguarda il valore ottenuto effettuando il test del $\chi^2$ sul fit realizzato, si ha che il rapporto $\chi^2/GDL$ è sempre inferiore ad 1, dunque si può affermare che l'ipotesi di linearità viene accettata con un livello di confidenza del 99.5\%.
 È inoltre stato stimata la $\sigma_{V, post}$ che per ogni campione, sia in compressione che decompressione è risultata inferiore rispetto alla stima dell'errore sul volume, quest'ultimo pari a $\SI{0.01}{\centi\meter\cubed}$. Tuttavia però la differenza fra i due errori non è tale da far risultare uno dei due una sottostima o sovrastima. Si può affermare che le due stime siano consistenti. Vengono riportate le stime delle $\sigma_{V, post}$ nella Tabella \ref{tab:sigma_post}.
 
@@ -312,6 +306,7 @@ Vengono infine riportate le stime del numero di moli totali ottenute da ogni cam
 
 Si suppone che l'errore riportato per la stima delle moli sia una sottostima dell'errore effettivo di cui è affetto il valore. Nelle successive fasi dell'analisi dati si cercherà di stimare al meglio tale errore.
 
+\newpage
 Per verificare l'ipotesi che tutti questi valori derivino da un'unica distribuzione, si è eseguito un test della t di Student su due campioni. Scelto un livello di confidenza del 99.5\% l'ipotesi è non è stata rigettata in quanto con $10 GDL$ il test fornisce un valore di $\approx 0.83 < t_{Th, CL. 99.5\%}$ pertanto i diversi campioni forniscono stime coerenti per il computo del numero di moli.\newline
 
 Dopo aver valutato le possibili compatibilità fra grandezze ottenute dalla fase in compressione e decompressione è possibile assumere il gas come ideale in quanto non ci sono grandi differenze fra le due fasi e la trasformazione può per questi campioni essere generalmente intesa come quasi statica. \\
@@ -381,11 +376,11 @@ dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora conside
     \label{fig:t0_compressione}
     \makebox[\textwidth]{
     \subfloat[$T_{0}$ in comprensione]{
-        \includegraphics[width=8.75cm]{zero_assoluto_compressione.pdf}
+        \includegraphics[width=8cm]{zero_assoluto_compressione.pdf}
         \label{fig:t0_compr}
     }
     \subfloat[Paraboloide comprensione]{
-        \includegraphics[width=8.75cm]{paraboloide_Compressioni.pdf}
+        \includegraphics[width=8cm]{paraboloide_Compressioni.pdf}
     
         \label{fig:par_compr}
     }}
@@ -398,11 +393,11 @@ dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora conside
     \label{fig:t0_decompressione}
     \makebox[\textwidth]{
     \subfloat[$T_{0}$ in decompressione]{
-        \includegraphics[width=8.75cm]{zero_assoluto_decompressione.pdf}
+        \includegraphics[width=8cm]{zero_assoluto_decompressione.pdf}
         \label{fig:t0_deco}
     }
     \subfloat[Paraboloide decompressione]{
-        \includegraphics[width=8.75cm]{paraboloide_DECompressioni.pdf}
+        \includegraphics[width=8cm]{paraboloide_DECompressioni.pdf}
         \label{fig:par_deco}
     }}
 \end{figure}
@@ -583,6 +578,24 @@ Il procedimento per valutare la quasi staticità e reversibilità è stato un ca
 \end{table}
 
 Si è dunque preferita un'analisi qualitativa osservando la distribuzione dei dati 1/P vs V come riportato nel Grafico \ref{fig:IL GRAFIC OMALVAGIO DI FABIO}. Si osserva che più la variazione di volume della siringa è repentina più le misurazioni nella fase in compressione sono distanziate dal quelle in decompressione. Questo fenomeno può essere attribuibile alla non quasi staticità della trasformazione. In particolare i punti in compressione hanno ordinata sistematicamente maggiore di quelli in fase di decompressione. Da questa ultima considerazione pertanto si possono assumere i dati delle isoterme a velocità lenta ed intermedia come quasi statiche a differenza di quella l'isoterma ad espansione rapida.  
+
+\subsection{Analisi sugli scarti}
+%guardiamo i grafici e vediamo che all'inizio e all afine cìè iun po di rumopre
+%decidiamo allora di calcolare gli scarti
+%osservazioni sul grafico degli scarti calcolati
+%come si è sceklto di eseguire la reiezione e perchè
+%rieseguito il fit su piani di calapeyron storti
+%confronto con preecedenti calcoli, evincere le differenze
+%PARTE IMPORTANTE-> errore sulle moli uguale a errore a posteriori su interploaz zero assoluto.
+Osservando i grafici 1/P vs V si è prestata attenzione all'andamento delle misure in particolare degli scarti che esse presentavano rispetto alla retta di fit ottenuta in prima analisi. Si è notato infatti che nei dati appartenenti al range definito isotermo, solo i punti in corrispondenza dei valori massimi e minimi di pressione presentavano deviazioni sistematiche dalla retta di interpolazione. Per dare un'idea dell'entità di tale deviazione viene riportato il Grafico \ref{fig:GRAFICO SCARTI FABIO} in cui si riportano gli scarti delle misure provenienti dal PRIMO CAMPIONE sia in compressione che in decompressione. Gli altri grafici, qui omessi, hanno un lo stesso andamento caratteristico. In questo Grafico 
+
+
+
+È possibile verificare che le misure comprese tra i valori di $\SI{0.4}{\centi\meter\squared\per\kilogram}$ e $\SI{0.7}{\centi\meter\squared\per\kilogram}$ non presentano notevoli variazioni statistiche a differenza dei punti esterni a questo range che sembrano avere la tendenza ad avere scarti positivi. Questa osservazione non è stata tale da invalidare l'analisi fino ad ora svolta: già si era verificato tramite il test del $\chi^{2}$ un andamento lineare di tutti i dati dai quali si sono ricavate stime molto accurate del numero di moli presenti nel sistema e già si è verificato che la trasformazione sia effettivamente isoterma. Si è comunque scelto di provare a stimare il numero di moli del sistema considerando i punti del grafico 1/P vs. V che rispettassero criteri più stringenti. Tali criteri si sono basati su un'analisi qualitativa dei grafici degli scarti e dall'andamento degli scarti si è deciso di considerare soltanto i punti aventi il valore di 1/P compreso nell'intervallo $(0.4 \div 0.7) \si{\centi\meter\squared\per\kilogram}$. Si è ricalcolato il numero di moli derivate considerando questa volta questo set di punti estrapolato dall'intero campione iniziale. Le stime derivate vengono riportate di seguito:
+
+
+
+
 
 
 \subsection{Stima numero di moli finale}
