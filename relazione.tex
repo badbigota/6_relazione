@@ -79,6 +79,8 @@ L'apparato sperimentale è composto dai seguenti elementi:
 \end{enumerate}
 
 
+
+
 \newpage
 \section{Presa dati}
 Impiegando la strumentazione fornita, si sono realizzate le prese dati variando di volta in volta la temperatura dell'acqua nella quale il sistema era immerso, cercando di limitare il più possibile ogni dispersione termica, tramite l'impiego del vaso Dewar. Con il contenitore inizialmente a temperatura prossima ai $\SI{5}{\celsius}$, per via del ghiaccio presente al suo interno, si è effettuata una prima presa dati. Successivamente si è aumentata la temperatura del bagno termico, misurata dal sensore, tramite la resistenza immersa di $\Delta T \approx\SI{10}{\celsius}$. Assestatasi la temperatura al valore prefissato si è rieseguita la presa dati. Tale processo si è ripetuto per tutte le temperature riportate in Tabella \ref{tab:camp_temp}. Si specifica che la presa dati si è svolta muovendo opportunamente una manovella in modo da controllare la compressione e la decompressione della siringa, mescolando occasionalmente il liquido all'interno del Dewar tramite l'agitatore. Il sistema infatti rileva la posizione dello stantuffo il cui moto dipende dalla posizione della manovella, stimando quindi indirettamente il volume del gas occupato all'interno della siringa. Si noti che i due campioni finali realizzati nel momento in cui la temperatura era ancora a $\SI{25}{\celsius}$ si differenziano per modalità di presa dati, rispettivamente con una variazione più lenta e con una variazione più veloce rispetto a quelle mediamente usate per tutti gli altri campioni.
@@ -351,22 +353,15 @@ dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora conside
     \caption{Parametri fit T_0}
     \label{tab:fit_t0}
     \begin{tabular}{|c|c|c|c|}
-        \cline{2-4}
-        \multicolumn{1}{c|}{}& \multirow{2}{*}{Campione} & Temperatura & B\\ 
-        \multicolumn{1}{c|}{}& &[\si{\celsius}] & [\si{\kilogram\cdot\centi\meter\per\celsius}]\\ \hline
-        \multirow{6}{*}{\rotatebox[origin=c]{90}{Compressione}}& \cellcolor[rgb]{0.85,0.85,0.85}$1$ & \cellcolor[rgb]{0.85,0.85,0.85}$5.9130\pm0.0009$ & \cellcolor[rgb]{0.85,0.85,0.85}$25.72\pm0.02$\\ \cline{2-4}
-        & $2$ & $15.6205\pm0.0005$ & $26.72\pm0.02$\\ \cline{2-4}
-        & \cellcolor[rgb]{0.85,0.85,0.85}$3$ & \cellcolor[rgb]{0.85,0.85,0.85}$24.9972\pm0.0005$ & \cellcolor[rgb]{0.85,0.85,0.85}$27.49\pm0.02$\\ \cline{2-4}
-        & $4$ & $35.101\pm0.001$ & $28.01\pm0.02$\\ \cline{2-4}
-        & \cellcolor[rgb]{0.85,0.85,0.85}$5$ & \cellcolor[rgb]{0.85,0.85,0.85}$44.443\pm0.003$ & \cellcolor[rgb]{0.85,0.85,0.85}$29.01\pm0.02$\\ \cline{2-4}
-        & $6$ & $53.934\pm0.008$ & $29.94\pm0.02$\\ \hline \hline
-
-        \multirow{6}{*}{\rotatebox[origin=c]{90}{Decompressione}}& \cellcolor[rgb]{0.85,0.85,0.85}$1$ & \cellcolor[rgb]{0.85,0.85,0.85}$5.9130\pm0.0009$ & \cellcolor[rgb]{0.85,0.85,0.85}$25.90\pm0.02$\\ \cline{2-4}
-        & $2$ & $15.6205\pm0.0005$ & $26.74\pm0.02$\\ \cline{2-4}
-        & \cellcolor[rgb]{0.85,0.85,0.85}$3$ & \cellcolor[rgb]{0.85,0.85,0.85}$24.9972\pm0.0005$ & \cellcolor[rgb]{0.85,0.85,0.85}$27.49\pm0.03$\\ \cline{2-4}
-        & $4$ & $35.101\pm0.001$ & $28.28\pm0.02$\\ \cline{2-4}
-        & \cellcolor[rgb]{0.85,0.85,0.85}$5$ & \cellcolor[rgb]{0.85,0.85,0.85}$44.443\pm0.003$ & \cellcolor[rgb]{0.85,0.85,0.85}$29.05\pm0.03$\\ \cline{2-4}
-        & $6$ & $53.934\pm0.008$ & $29.95\pm0.02$\\ \hline
+        \hline
+        \multirow{2}{*}{Campione} & Temperatura & B_{comp} & B_{decomp}\\ 
+        &[\si{\celsius}] & [\si{\kilogram\cdot\centi\meter\per\celsius}]& [\si{\kilogram\cdot\centi\meter\per\celsius}]\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $5.9130\pm0.0009$ & $25.72\pm0.02$ & $25.90\pm0.02$\\ \hline
+        $2$ & $15.6205\pm0.0005$ & $26.72\pm0.02$ & $26.74\pm0.02$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $24.9972\pm0.0005$ & $27.49\pm0.02$ & $27.49\pm0.03$\\ \hline
+        $4$ & $35.101\pm0.001$ & $28.01\pm0.02$ & $28.28\pm0.02$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $44.443\pm0.003$ & $29.01\pm0.02$ & $29.05\pm0.03$\\ \hline
+        $6$ & $53.934\pm0.008$ & $29.94\pm0.02$ & $29.95\pm0.02$\\ \hline 
     \end{tabular}
 \end{table}
 
@@ -376,11 +371,11 @@ dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora conside
     \label{fig:t0_compressione}
     \makebox[\textwidth]{
     \subfloat[$T_{0}$ in comprensione]{
-        \includegraphics[width=8cm]{zero_assoluto_compressione.pdf}
+        \includegraphics[width=8.5cm]{zero_assoluto_compressione.pdf}
         \label{fig:t0_compr}
     }
     \subfloat[Paraboloide comprensione]{
-        \includegraphics[width=8cm]{paraboloide_Compressioni.pdf}
+        \includegraphics[width=8.5cm]{paraboloide_Compressioni.pdf}
     
         \label{fig:par_compr}
     }}
@@ -393,11 +388,11 @@ dove con $T_{\celsius}$ si è indicata la temperatura di ciascun isocora conside
     \label{fig:t0_decompressione}
     \makebox[\textwidth]{
     \subfloat[$T_{0}$ in decompressione]{
-        \includegraphics[width=8cm]{zero_assoluto_decompressione.pdf}
+        \includegraphics[width=8.5cm]{zero_assoluto_decompressione.pdf}
         \label{fig:t0_deco}
     }
     \subfloat[Paraboloide decompressione]{
-        \includegraphics[width=8cm]{paraboloide_DECompressioni.pdf}
+        \includegraphics[width=8.5cm]{paraboloide_DECompressioni.pdf}
         \label{fig:par_deco}
     }}
 \end{figure}
@@ -467,7 +462,7 @@ Si riportano nella tabella i valori dell'errore delle moli ottenute utilizzando 
 
 
 
-\subsection{Stima delle moli campionarie}
+\subsection{Stima delle moli campionarie}\label{par:moli_campionarie}
 %stima di numero moli da tutte le triple p v e t e si vede che in questo caso sono minori perché è solo quello dentro la siringa
 Si sono inoltre calcolate le moli considerando al media fra tutti i singoli valori di pressione, volume e temperatura per ciascuna isoterma, ottenendo un campione di valori da cui poi si è stimata la media. Infine da tutte le stime derivate dalle single isoterme si è ricavato il numero di moli riassuntivo con il relativo errore sulla media.
 \begin{gather*}
@@ -475,6 +470,7 @@ Si sono inoltre calcolate le moli considerando al media fra tutti i singoli valo
     \{\overline{n_{i}}\}_{j} \Rightarrow \overline{n}\pm \sigma_{\overline{n}}
 \end{gather*}
 
+I valori ottenuti sono riportati in Tabella \ref{tab:moli_campionarie} da cui è immediato osservare che essi risultano sempre sottostimati rispetto a quelli calcolati tramite l'interpolazione lineare in quanto la stima campionaria si riferisce solo alle moli contenute nella siringa, quella tramite fit alle moli totali.
 
 \begin{wraptable}{r}{5cm}
     \begin{tabular}{|c|c|}
@@ -492,8 +488,6 @@ Si sono inoltre calcolate le moli considerando al media fra tutti i singoli valo
     \caption{Moli Campionarie}
     \label{tab:moli_campionarie}
 \end{wraptable}
-
-I valori ottenuti sono riportati in Tabella \ref{tab:moli_campionarie} da cui è immediato osservare che essi risultano sempre sottostimati rispetto a quelli calcolati tramite l'interpolazione lineare in quanto la stima campionaria si riferisce solo alle moli contenute nella siringa, quella tramite fit alle moli totali.
 
 Come accennato precedentemente non è possibile escludere una correlazione fra le tre grandezze riferite ad una stessa misurazione, né a misure consecutive nello stesso campione di una singola isoterma. La possibile correlazione può essere ricondotta al metodo di acquisizione dati dei circuiti impiegati. In questa analisi tuttavia, essendo dubbia l'entità e l'importanza di questa correlazione, tutti i dati sono stati considerati scorrelati. Tuttavia, proprio per scongiurare questo rischio, si è optato per stimare $\overline{n}$ tramite una media aritmetica non una media ponderata, associandovi in ogni caso la $\sigma_{\overline{n}}$. L'errore percentuale di $\overline{n}$ risulta essere di $\approx 0.4 \%$, valore piuttosto piccolo, probabilmente sottostimato. 
 
@@ -513,6 +507,7 @@ Sono stati realizzati i seguenti grafici a partire dalle terne di dati relative 
     }}
     \label{fig:isocore}
 \end{figure}
+
 Si è poi eseguito un fit lineare tramite il metodo del minimo $\chi^2$ ed i parametri del fit calcolati vengono riportati direttamente nel Grafico \ref{fig:prima_isocora} e \ref{fig:seconda_isocora}. In Tabella \ref{tab:quantificatori_isocore} si riportano infine i quantificatori di bontà del fit ottenuto.
 
 \begin{table}[h!]
@@ -520,14 +515,16 @@ Si è poi eseguito un fit lineare tramite il metodo del minimo $\chi^2$ ed i par
     \begin{tabular}{|c|c|c|c|}
         \hline
          & $\chi^2$ & $\rho$ & $t_{student}$ \\ \hline
-        \rowcolor[rgb]{0.85,0.85,0.85} Prima isocora & $3.63685$ & $0.99625$ & $23.0364$ \\ \hline
-        Seconda isocora & $1.85202$ & $0.993837$ & $17.9304$ \\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85} Prima isocora & $3.6$ & $0.9962$ & $23.0$ \\ \hline
+        Seconda isocora & $1.9$ & $0.9938$ & $17.9$ \\ \hline
     \end{tabular}
     \caption{Quantificatori su interpolazioni di isocore}
     \label{tab:quantificatori_isocore}
 \end{table}
 
 
+
+\newpage
 Con 4 gradi di libertà, l'ipotesi di un andamento lineare non è rigettata con un CL del $99.5\%$, sia considerando il test sul $\chi^{2}$ si il test di Student sul coefficiente di correlazione lineare, pertanto è possibile  affermare che sussiste un legame di diretta proporzionalità fra temperatura e pressione.
 La legge che lega queste due grandezze è
 \begin{equation*}
@@ -587,26 +584,80 @@ Si è dunque preferita un'analisi qualitativa osservando la distribuzione dei da
 %rieseguito il fit su piani di calapeyron storti
 %confronto con preecedenti calcoli, evincere le differenze
 %PARTE IMPORTANTE-> errore sulle moli uguale a errore a posteriori su interploaz zero assoluto.
-Osservando i grafici 1/P vs V si è prestata attenzione all'andamento delle misure in particolare degli scarti che esse presentavano rispetto alla retta di fit ottenuta in prima analisi. Si è notato infatti che nei dati appartenenti al range definito isotermo, solo i punti in corrispondenza dei valori massimi e minimi di pressione presentavano deviazioni sistematiche dalla retta di interpolazione. Per dare un'idea dell'entità di tale deviazione viene riportato il Grafico \ref{fig:GRAFICO SCARTI FABIO} in cui si riportano gli scarti delle misure provenienti dal PRIMO CAMPIONE sia in compressione che in decompressione. Gli altri grafici, qui omessi, hanno un lo stesso andamento caratteristico. In questo Grafico 
+Osservando i grafici 1/P vs V si è prestata attenzione all'andamento delle misure in particolare degli scarti che esse presentavano rispetto alla retta di fit ottenuta in prima analisi. Si è notato infatti che nei dati appartenenti al range definito isotermo, solo i punti in corrispondenza dei valori massimi e minimi di pressione presentavano deviazioni sistematiche dalla retta di interpolazione. Per dare un'idea dell'entità di tale deviazione viene riportato il Grafico \ref{fig:scarti} in cui si riportano gli scarti delle misure provenienti dal primo campione sia in compressione che in decompressione. Gli altri grafici, qui omessi, hanno un lo stesso andamento caratteristico. In questo Grafico i punti hanno come valore di ascissa il valore $1/P_{i}$ mentre in ordinata lo scarto $\delta_{i}=V_{i} - a - b \cdot (1/P_{i})$ dove $a$ e $b$ sono i parametri di fit ottenuti dall'interpolazione lineare nei grafici 1/P vs. V.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=9cm]{scarti.pdf}
+    \caption{Scarti del primo campione in compressione e decompressione}
+    \label{fig:scarti}
+\end{figure}
+
+È possibile verificare che le misure comprese tra i valori di $\SI{0.45}{\centi\meter\squared\per\kilogram}$ e $\SI{0.7}{\centi\meter\squared\per\kilogram}$ non presentano notevoli variazioni statistiche a differenza dei punti esterni a questo range che sembrano avere la tendenza ad avere scarti positivi. Questa osservazione non è stata tale da invalidare l'analisi fino ad ora svolta: già si era verificato tramite il test del $\chi^{2}$ un andamento lineare di tutti i dati dai quali si sono ricavate stime molto accurate del numero di moli presenti nel sistema e già si è verificato che la trasformazione sia effettivamente isoterma. Si è comunque scelto di provare a stimare il numero di moli del sistema considerando i punti del grafico 1/P vs. V che rispettassero criteri più stringenti. Tali criteri si sono basati su un'analisi qualitativa dei grafici degli scarti e dall'andamento degli scarti si è deciso di considerare soltanto i punti aventi il valore di 1/P compreso nell'intervallo $(0.45 \div 0.7) \si{\centi\meter\squared\per\kilogram}$. Si è ricalcolato il numero di moli derivate considerando questa volta questo set di punti estrapolato dall'intero campione iniziale. Le stime delle moli derivate vengono riportate di seguito:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \multirow{2}{*}{Campione} & n_{comp} & n_{decomp}\\ 
+        & $10^{-6}$[mol] & $10^{-6}$[mol]\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$1$ & $1088\pm4$ & $1096\pm3$\\ \hline
+        $2$ & $1090\pm4$ & $1096\pm3$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$3$ & $1082\pm3$ & $1091\pm4$\\ \hline
+        $4$ & $1074\pm3$ & $1084\pm4$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}$5$ & $1076\pm3$ & $1086\pm3$\\ \hline	
+        $6$ & $1077\pm3$ & $1087\pm3$\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}Media & $1080\pm3$ & $1090\pm2$\\ \hline
+    \end{tabular}
+    \caption{Numero di moli in compressione e decompressione dopo reiezione}
+    \label{tab:moli_compress_decompress_reiez}
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        & n & $\sigma_{post}$\\
+        & $10^{-5}$[mol] & $10^{-5}$[mol]\\ \hline
+        \rowcolor[rgb]{0.85,0.85,0.85}Comp & $99\pm1$ & $3$\\ \hline
+        Decomp & $102\pm1$ & $2$\\ \hline
+    \end{tabular}
+    \caption{Numero di moli ottenute tramite fit dopo reiezione}
+    \label{tab:moli_fit_reiez}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    \textbf{Campione} & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ \\ \hline
+    \rowcolor[rgb]{0.85,0.85,0.85}$\lambda_{b_{comp}-b_{decomp}}$ & $1.5$ & $1.0$ & $1.7$ & $2.0$ & $2.1$ & $2.3$ \\ \hline
+    \end{tabular}
+\caption{Compatibilità compressione-decompressione}
+\label{tab:compatibilita_coeff_ang_compress_decompress_nuovo}
+\end{table}
+
+
+Le stime fornite con la nuova reiezione dei dati basata sugli scarti hanno permesso di stimare con maggior precisione l'errore a posteriori del coefficiente angolare dei grafici (1/P, V), e dunque delle moli. Si era infatti riscontrato che l'errore a posteriori ricavato da i campioni in compressione e decompressione risultava differente a causa della incompatibilità riscontrata tra i coefficienti angolari riportata alla \ref{tab:compatibilita_coeff_ang_compress_decompress} per i campioni 1 e 3. Reiettando nuovamente i dati si sono ottenuti dunque valori di compatibilità inferiori a 3, come mostrato nella Tabella \ref{tab:compatibilita_coeff_ang_compress_decompress_nuovo} e pertanto si è arrivati ad una stima migliore dell'errore a posteriori delle moli, ma soprattutto ad una stima migliore di $n$ stesso. Si suppone però che l'errore fornito per la stima di $n$ mediante il coefficiente angolare dei grafici (1/P, V) sia una sottostima dell'errore effettivo di cui sono affetti i valori.
+Risulta poi che, per quanto riguarda i grafici generati a partire dalle teperature e dai coefficenti angolari di  con questa nuova reiezione dei dati si è ottenuto un valore di $\lambda$ inferiore a 1, (ovvero $0.8$ rispetto a $2.4$ ottenuto in precedenza) mostrando dunque una compatibilità ottima tra la stima del numero di moli ottenute dal grafico (T, B) in compressione e in decompressione.\newline
+
+\subsection{Miglior Stima delle moli}
+Confrontando il numero di moli ottenuto nei diversi metodi utilizzati nell'analisi dati, si è cercato di delineare quale tra di questi ultimi desse un risultato migliore al fine di riportare una stima definitiva di n.\\
+La stima del numero di moli ottenuto dall'analisi delle isocore è risultato non valido in quanto , confrontando le stime ottenute per due campioni di diversa natura, si è ottenuto che esse risultano fortemente incompatibili, in contrasto con l'aspettativa teorica.Pertanto si è scelto di non considerare tale metodo per definire la miglior stima possibile di n.\\
+In base alla nuova analisi dati eseguita al paragrafo precedente ed in base alla discussione finale del paragrafo precedente relativa all'analisi degli scarti, si è deciso di stimare il numero di moli utilizzando la stime fornite alla Tabella \ref{tab:moli_fit_reiez}. Si è eseguita la media ponderata delle misure in compressione ed in decompressione e si è associato il relativo errore. La stima delle moli risulta pertanto $(1004\pm8)\cdot10^{-06} \si{mole}$
 
 
 
-È possibile verificare che le misure comprese tra i valori di $\SI{0.4}{\centi\meter\squared\per\kilogram}$ e $\SI{0.7}{\centi\meter\squared\per\kilogram}$ non presentano notevoli variazioni statistiche a differenza dei punti esterni a questo range che sembrano avere la tendenza ad avere scarti positivi. Questa osservazione non è stata tale da invalidare l'analisi fino ad ora svolta: già si era verificato tramite il test del $\chi^{2}$ un andamento lineare di tutti i dati dai quali si sono ricavate stime molto accurate del numero di moli presenti nel sistema e già si è verificato che la trasformazione sia effettivamente isoterma. Si è comunque scelto di provare a stimare il numero di moli del sistema considerando i punti del grafico 1/P vs. V che rispettassero criteri più stringenti. Tali criteri si sono basati su un'analisi qualitativa dei grafici degli scarti e dall'andamento degli scarti si è deciso di considerare soltanto i punti aventi il valore di 1/P compreso nell'intervallo $(0.4 \div 0.7) \si{\centi\meter\squared\per\kilogram}$. Si è ricalcolato il numero di moli derivate considerando questa volta questo set di punti estrapolato dall'intero campione iniziale. Le stime derivate vengono riportate di seguito:
+\section{Conclusione}
+A seguito dell'analisi compiuta è stato possibile verificare con diversi metodi la legge dei gas. A seconda del metodo, l'accuratezza con cui si reputa valida la legge varia.
 
 
 
 
 
-
-\subsection{Stima numero di moli finale}
-Si riassumono in questa sezione i diversi metodi usati per la stima del numero di moli per i 6 campioni di isoterme.
-
-
-\section{Conclusioni}
 
 \newpage
 \section{Appendice}
-\subsection{Ulteriori grafici a completamento di quelli riportati in Analisi e Discussione}
 \subsection{Formulario}
 \textbf{Media, deviazione standard, deviazione standard della media}
 \begin{align*}
@@ -666,6 +717,14 @@ E' stato utilizzato il simbolo $\approx$ in quanto si è scelto di troncare al p
     )(y_i - \overline{y})}{\sqrt{\sum_{i=1}^{N}(x_i -\overline{x})^2}\sqrt{\sum_{i=1}^{N}(y_i - \overline{y})^2}}
 \end{equation*}\textbf{
 }
+
+\textbf{Test di Student su due campioni ad ugual varianza}\\
+\begin{equation*}
+    t=\frac{\overline{x}-\overline{y}}{S\cdot \sqrt{\frac{1}{N}+\frac{1}{M}}}
+\end{equation*}
+\begin{equation*}
+    S^2=\frac{(N-1)\cdot S_{x}^2+(M-1)\cdot S_{y}^2}{M+N-2}
+\end{equation*}
 
 \section{Codici sorgente}
 %\subsection{Programmi}
